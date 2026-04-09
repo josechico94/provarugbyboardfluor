@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guía completa de todas las funciones del editor táctico de RugbyBoard Pro."/>
+  <meta property="og:title" content="Documentación | RugbyBoard Pro"/>
+  <meta property="og:description" content="Guía completa de todas las funciones del editor táctico de RugbyBoard Pro."/>
+  <meta property="og:image" content="https://rugbyboardpro.com/rbp_Italic.png"/>
+  <meta property="og:url" content="https://rugbyboardpro.com/document.html"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://rugbyboardpro.com/document.html"/>
+  <link rel="preload" href="rbp_Italic.png" as="image" fetchpriority="high"/>
+  <title>Documentación - RugbyBoard Pro</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --fluor:#c8ff00; --fluor-dim:rgba(200,255,0,0.12); --fluor-glow:rgba(200,255,0,0.35);
+      --black:#010409; --ink:#f0f6fc; --ink-muted:rgba(240,246,252,0.65);
+      --border:rgba(255,255,255,0.07); --card-bg:rgba(255,255,255,0.025);
+    }
+    
+    body { box-sizing: border-box; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; width: 100%; }
+    body {
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #f0f6fc;
+      overflow-x: hidden;
+      background: #010409;
+    }
+
+    .landing-wrapper { width: 100%; min-height: 100%; position: relative; }
+    .bg-gradient {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(ellipse at top, rgba(200, 255, 0, 0.12) 0%, transparent 50%),
+                  radial-gradient(ellipse at bottom right, rgba(200, 255, 0, 0.12) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+    .grid-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none; z-index: 0;
+    }
+    .content-wrapper { position: relative; z-index: 1; }
+
+    /* ============= NAV (igual al home) ============= */
+/* ============= Mobile menu (igual al home) ============= */
+.chev { opacity: 0.65; font-size: 12px; }
+
+.mobile-lang/* ============= Docs layout ============= */
+    .docs-hero {
+      padding: 4.5rem 3rem 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .5rem 1rem;
+      background: rgba(200,255,0,0.10);
+      border: 1px solid rgba(200,255,0,0.28);
+      border-radius: 999px;
+      color: #c8ff00;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .badge-dot { width: 8px; height: 8px; border-radius: 999px; background: #c8ff00; }
+    .docs-title {
+      font-size: 3.3rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-top: 1.2rem;
+      line-height: 1.1;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #c8ff00 0%, #c8ff00 50%, #8b5cf6 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .docs-subtitle {
+      margin-top: 1.2rem;
+      color: rgba(240, 246, 252, 0.70);
+      font-size: 1.15rem;
+      max-width: 780px;
+      line-height: 1.75;
+    }
+
+    .docs-shell {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 3rem 5rem;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      backdrop-filter: blur(18px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 96px;
+      padding: 1.25rem;
+    }
+    .sidebar h3 {
+      font-weight: 800;
+      color: rgba(240,246,252,0.92);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+    }
+    .toc a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .85rem .9rem;
+      border-radius: 16px;
+      text-decoration: none;
+      color: rgba(240,246,252,0.78);
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.03);
+      transition: transform .16s ease, border-color .2s ease, background .2s ease;
+      margin-bottom: .6rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    .toc a:hover {
+      transform: translateY(-1px);
+      border-color: rgba(200,255,0,0.28);
+      background: rgba(200,255,0,0.08);
+      color: rgba(240,246,252,0.92);
+    }
+    .toc small { opacity: .6; font-weight: 700; }
+
+    .main {
+      padding: 1.25rem;
+    }
+
+    .section {
+      padding: 1.25rem;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 1.2rem;
+    }
+    .section h2 {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: .25rem;
+    }
+    .section p {
+      color: rgba(240,246,252,0.72);
+      line-height: 1.8;
+      margin-top: .5rem;
+    }
+
+    .cards-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      padding: 1.25rem;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease, background .22s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(135deg, rgba(200,255,0,0.10), rgba(200,255,0,0.10));
+      opacity: 0;
+      transition: opacity .22s ease;
+      pointer-events: none;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(200,255,0,0.25);
+      box-shadow: 0 20px 60px rgba(200,255,0,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+    .card:hover::before { opacity: 1; }
+    .card-inner { position: relative; z-index: 1; }
+    .card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #c8ff00 0%, #c8ff00 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #000;
+      font-size: 1.2rem;
+      box-shadow: 0 12px 28px rgba(200,255,0,0.25);
+      margin-bottom: .85rem;
+    }
+    .card h3 { font-weight: 850; font-size: 1.05rem; letter-spacing: -0.01em; margin-bottom: .3rem; }
+    .card p { color: rgba(240,246,252,0.70); font-size: .95rem; line-height: 1.65; }
+
+    .codebox {
+      margin-top: .9rem;
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(1,4,9,0.55);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: rgba(240,246,252,0.85);
+      font-size: .92rem;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+
+    .callout {
+      margin-top: 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(200,255,0,0.22);
+      background: rgba(200,255,0,0.08);
+      padding: 1rem 1.1rem;
+      display: flex; gap: .75rem;
+      color: rgba(240,246,252,0.85);
+    }
+    .callout i { color: #c8ff00; margin-top: .2rem; }
+
+    /* ============= Footer (igual al home) ============= */
+........../* Responsive */
+    @media (max-width: 1024px) {
+      .docs-shell { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: auto; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .}
+
+    @media (max-width: 860px) {
+      .docs-hero { padding: 3rem 1.5rem 1.5rem; }
+      .docs-title { font-size: 2rem; }
+      .docs-shell { padding: 0 1.5rem 3rem; }
+      .cards-grid { grid-template-columns: repeat(2,1fr) !important; }
+    }
+    @media (max-width: 480px) {
+      .docs-title { font-size: 1.7rem; }
+      .docs-shell { padding: 0 1rem 2rem; }
+      .cards-grid { grid-template-columns: 1fr !important; }
+    }</style>
+</head>
+
+<body>
+  <div class="landing-wrapper">
+    <div class="bg-gradient"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="content-wrapper">
+
+
+    <!-- RBP_NAV -->
+
+
+      <!-- HERO docs -->
+      <header class="docs-hero">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          <span data-i18n="docsBadge">Guía Classroom • Aprende en minutos</span>
+        </span>
+
+        <h1 class="docs-title">
+          <span data-i18n="docsTitle1">Documentación</span>
+          <span class="gradient-text" data-i18n="docsTitle2">RugbyBoard Pro</span>
+        </h1>
+
+        <p class="docs-subtitle" data-i18n="docsSubtitle">
+          Esta guía está pensada como un tutorial paso a paso. Vas a encontrar lecciones, ejemplos y buenas prácticas
+          para crear jugadas, animaciones y compartirlas con tu equipo.
+        </p>
+      </header>
+
+      <!-- Docs shell -->
+      <main class="docs-shell">
+
+        <!-- Sidebar / TOC -->
+        <aside class="panel sidebar">
+          <h3 data-i18n="tocTitle">Contenido</h3>
+          <div class="toc">
+            <a href="#getting-started"><span data-i18n="toc1">1. Primeros pasos</span><small>→</small></a>
+            <a href="#create-play"><span data-i18n="toc2">2. Crear una jugada</span><small>→</small></a>
+            <a href="#animations"><span data-i18n="toc3">3. Animaciones</span><small>→</small></a>
+            <a href="#export-share"><span data-i18n="toc4">4. Exportar y compartir</span><small>→</small></a>
+            <a href="#tips"><span data-i18n="toc5">5. Tips pro</span><small>→</small></a>
+          </div>
+
+          <div class="callout" style="margin-top:1rem;">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+              <strong data-i18n="sidebarTipTitle">Tip rápido</strong>
+              <div style="color:rgba(240,246,252,0.75);" data-i18n="sidebarTipText">
+                Usá nombres claros en tus jugadas (ej: “Salida 9-10”, “Line + Maul”) para encontrarlas más rápido.
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main content -->
+        <section class="panel main">
+
+          <!-- 1 -->
+          <div class="section" id="getting-started">
+            <h2 data-i18n="s1Title">1) Primeros pasos</h2>
+            <p data-i18n="s1Text">
+              En RugbyBoard Pro podés diseñar estrategias con jugadores, flechas, zonas y símbolos. La idea es que cualquier miembro del staff
+              entienda la jugada en 10 segundos.
+            </p>
+
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+                  <h3 data-i18n="c1Title">Estructura de una jugada</h3>
+                  <p data-i18n="c1Text">Jugadores + movimientos + objetivo. Mantené la escena simple y progresiva.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-palette"></i></div>
+                  <h3 data-i18n="c2Title">Colores por rol</h3>
+                  <p data-i18n="c2Text">Diferenciá forwards/backs con color para lectura instantánea en video o imagen.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-users"></i></div>
+                  <h3 data-i18n="c3Title">Plantillas de equipo</h3>
+                  <p data-i18n="c3Text">Creá equipos guardados para reutilizar formaciones sin repetir trabajo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="codebox" aria-label="Example checklist">
+              ✅ Checklist rápido:
+              1) Definí el objetivo (try, metro ganado, salida segura)
+              2) Posicioná jugadores (formación base)
+              3) Dibujá 1º fase (movimiento principal)
+              4) Agregá 2º fase (opción o salida)
+              5) Guardá y nombrá la jugada
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="section" id="create-play">
+            <h2 data-i18n="s2Title">2) Crear una jugada (ejemplo)</h2>
+            <p data-i18n="s2Text">
+              Vamos a crear una jugada simple: “Salida 9-10 + vuelta al 12”. La clave es marcar claramente la línea de carrera y la opción secundaria.
+            </p>
+
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-map-marked-alt"></i></div>
+                  <h3 data-i18n="c4Title">Paso A: Formación</h3>
+                  <p data-i18n="c4Text">Colocá 9, 10 y 12 en posiciones reales. Ajustá spacing para que sea legible.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-arrow-right"></i></div>
+                  <h3 data-i18n="c5Title">Paso B: Movimiento</h3>
+                  <p data-i18n="c5Text">Dibujá flecha del 9 al 10 y línea de carrera del 12 (opción 2).</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-save"></i></div>
+                  <h3 data-i18n="c6Title">Paso C: Guardar</h3>
+                  <p data-i18n="c6Text">Nombrá con convención: Fase + Canal + Objetivo (ej: “F1 Canal2 - Fix”).</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout">
+              <i class="fas fa-bullseye"></i>
+              <div>
+                <strong data-i18n="call1Title">Objetivo didáctico</strong>
+                <div style="color:rgba(240,246,252,0.75);" data-i18n="call1Text">
+                  Si el jugador mira el diagrama, debería saber qué hacer sin explicación adicional.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="section" id="animations">
+            <h2 data-i18n="s3Title">3) Animaciones</h2>
+            <p data-i18n="s3Text">
+              Las animaciones sirven para enseñar timing y secuencia. Animá por fases: primero el pase, luego la carrera,
+              y por último la opción secundaria.
+            </p>
+
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-film"></i></div>
+                  <h3 data-i18n="c7Title">Timing por fases</h3>
+                  <p data-i18n="c7Text">Usá delays para que la jugada “respire” y sea fácil de seguir.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-play"></i></div>
+                  <h3 data-i18n="c8Title">Repetición</h3>
+                  <p data-i18n="c8Text">Reproducí y ajustá: si se entiende a 1.2x, está perfecta.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-eye"></i></div>
+                  <h3 data-i18n="c9Title">Lectura visual</h3>
+                  <p data-i18n="c9Text">Reducí ruido: pocas flechas, pocas notas, lo justo.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="codebox">
+              Tip: Si la animación se ve “rápida”, probá:
+              - dividir en 2 fases
+              - bajar velocidad
+              - resaltar la opción principal (color + grosor)
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="section" id="export-share">
+            <h2 data-i18n="s4Title">4) Exportar y compartir</h2>
+            <p data-i18n="s4Text">
+              Podés exportar la jugada como imagen para WhatsApp / grupos, o compartirla con tu staff.
+              Lo ideal es adjuntar una versión corta (imagen) + una versión completa (animación).
+            </p>
+
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-image"></i></div>
+                  <h3 data-i18n="c10Title">Exportar imagen</h3>
+                  <p data-i18n="c10Text">Perfecto para imprimir o enviar en grupos. Mantené buen contraste.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-share-nodes"></i></div>
+                  <h3 data-i18n="c11Title">Compartir con staff</h3>
+                  <p data-i18n="c11Text">Centralizá la biblioteca: todos ven la versión correcta.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-lock"></i></div>
+                  <h3 data-i18n="c12Title">Buenas prácticas</h3>
+                  <p data-i18n="c12Text">Evitar duplicados: usá tags y fecha para control de versiones.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="section" id="tips">
+            <h2 data-i18n="s5Title">5) Tips Pro (staff)</h2>
+            <p data-i18n="s5Text">
+              Un sistema táctico se vuelve escalable cuando la documentación es consistente. Estos tips te ayudan a que tus jugadas
+              sean fáciles de enseñar y repetir.
+            </p>
+
+            <div class="cards-grid">
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-tag"></i></div>
+                  <h3 data-i18n="c13Title">Tags</h3>
+                  <p data-i18n="c13Text">Ej: “attack”, “defense”, “lineout”, “scrum”, “exit”, “kick”.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
+                  <h3 data-i18n="c14Title">Checklist por sesión</h3>
+                  <p data-i18n="c14Text">Qué entrenamos hoy + cuáles jugadas + qué métricas evaluamos.</p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-inner">
+                  <div class="card-icon"><i class="fas fa-diagram-project"></i></div>
+                  <h3 data-i18n="c15Title">Estandarización</h3>
+                  <p data-i18n="c15Text">Siempre misma simbología: flechas, runs, señuelos, zonas.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout">
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <strong data-i18n="call2Title">Modo classroom</strong>
+                <div style="color:rgba(240,246,252,0.75);" data-i18n="call2Text">
+                  Usá esta página como “aula”: una sección por semana y ejemplos por categoría.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </main>
+
+      <!-- FOOTER -->
+    <!-- RBP_FOOTER -->
+
+
+    </div>
+  </div>
+
+  
+<script src="rbp-shared.js"></script>
+</body>
+</html>

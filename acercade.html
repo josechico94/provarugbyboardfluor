@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="El equipo detrás de RugbyBoard Pro: entrenadores, analistas y desarrolladores."/>
+  <meta property="og:title" content="Acerca de | RugbyBoard Pro"/>
+  <meta property="og:description" content="El equipo detrás de RugbyBoard Pro: entrenadores, analistas y desarrolladores."/>
+  <meta property="og:image" content="https://rugbyboardpro.com/rbp_Italic.png"/>
+  <meta property="og:url" content="https://rugbyboardpro.com/acercade.html"/>
+  <meta property="og:type" content="website"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="canonical" href="https://rugbyboardpro.com/acercade.html"/>
+  <link rel="preload" href="rbp_Italic.png" as="image" fetchpriority="high"/>
+  <title>Acerca de | RugbyBoard Pro</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--fluor:#c8ff00;--fluor-dim:rgba(200,255,0,0.12);--fluor-glow:rgba(200,255,0,0.35);--black:#010409;--ink:#f0f6fc;--ink-muted:rgba(240,246,252,0.65);--border:rgba(255,255,255,0.07);--card-bg:rgba(255,255,255,0.025);}
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html,body{height:100%;width:100%;}
+    body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--black);color:var(--ink);overflow-x:hidden;line-height:1.6;}
+    .landing-wrapper{width:100%;min-height:100%;position:relative;}
+    .bg-gradient{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(200,255,0,0.08) 0%,transparent 60%);pointer-events:none;z-index:0;}
+    .grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(200,255,0,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(200,255,0,0.025) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0;}
+    .content-wrapper{position:relative;z-index:1;}
+.lang-btn:hover,.chev{opacity:0.5;font-size:12px;}
+/* PAGE */
+    .page-hero{max-width:1300px;margin:0 auto;padding:5rem 3rem 2rem;}
+    .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;background:var(--fluor-dim);border:1px solid var(--fluor);border-radius:999px;color:var(--fluor);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem;}
+    .badge-dot{width:7px;height:7px;background:var(--fluor);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+    .page-title{font-size:3rem;font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.05;margin-bottom:1rem;}
+    .fluor{color:var(--fluor);}
+    .page-sub{color:var(--ink-muted);font-size:1.1rem;max-width:860px;line-height:1.8;font-weight:500;}
+
+    .wrap{max-width:1300px;margin:0 auto;padding:0 3rem 5rem;display:grid;grid-template-columns:1fr;gap:1.25rem;}
+    .panel{background:var(--card-bg);border:1px solid var(--border);border-radius:22px;padding:1.5rem;backdrop-filter:blur(18px);}
+    .panel-title{font-size:1.2rem;font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:-.01em;color:var(--fluor);margin-bottom:.3rem;}
+    .panel-sub{color:var(--ink-muted);font-size:.9rem;margin-bottom:1.25rem;}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;align-items:start;}
+    .story{border-radius:18px;border:1px solid var(--border);background:rgba(255,255,255,0.015);padding:1.25rem;}
+    .story h2{font-size:1.05rem;font-weight:900;font-style:italic;text-transform:uppercase;letter-spacing:-.01em;color:var(--fluor);margin-bottom:.5rem;}
+    .story p{color:var(--ink-muted);line-height:1.8;font-size:.95rem;}
+    .highlight{border-radius:16px;border:1px solid rgba(200,255,0,0.2);background:var(--fluor-dim);padding:1rem;display:flex;gap:.75rem;margin-top:1rem;}
+    .highlight i{color:var(--fluor);margin-top:.2rem;}
+    .highlight strong{font-size:.95rem;font-weight:800;}
+    .highlight div{color:var(--ink-muted);font-size:.88rem;margin-top:.2rem;}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem;}
+    .card{border-radius:18px;border:1px solid var(--border);background:rgba(255,255,255,0.015);padding:1.25rem;transition:transform .22s,border-color .22s,box-shadow .22s;}
+    .card:hover{transform:translateY(-6px);border-color:rgba(200,255,0,0.3);box-shadow:0 20px 60px rgba(200,255,0,0.1);}
+    .card-icon{width:50px;height:50px;border-radius:14px;background:var(--fluor-dim);border:1px solid rgba(200,255,0,0.3);display:flex;align-items:center;justify-content:center;color:var(--fluor);font-size:1.1rem;margin-bottom:.85rem;}
+    .card h3{font-weight:900;font-style:italic;text-transform:uppercase;font-size:.95rem;color:var(--fluor);margin-bottom:.35rem;}
+    .card p{color:var(--ink-muted);font-size:.9rem;line-height:1.7;}
+    .values{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem;}
+    .value{border-radius:18px;border:1px solid var(--border);background:rgba(255,255,255,0.015);padding:1.15rem;}
+    .value .top{display:flex;align-items:center;gap:.7rem;margin-bottom:.35rem;}
+    .value .dot{width:34px;height:34px;border-radius:10px;background:var(--fluor-dim);border:1px solid rgba(200,255,0,0.3);display:flex;align-items:center;justify-content:center;color:var(--fluor);font-weight:900;font-size:.9rem;}
+    .value h4{font-weight:900;font-style:italic;text-transform:uppercase;font-size:.9rem;letter-spacing:-.01em;color:var(--fluor);}
+    .value p{color:var(--ink-muted);line-height:1.75;font-size:.9rem;}
+    .cta-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .cta-row strong{font-weight:900;font-style:italic;text-transform:uppercase;font-size:1rem;letter-spacing:-.01em;}
+    .cta-row span{color:var(--ink-muted);font-size:.9rem;}
+    .btn-group{display:flex;gap:.75rem;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1rem;border-radius:12px;border:2px solid var(--fluor);background:var(--fluor-dim);color:var(--fluor);font-weight:800;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;}
+    .btn:hover{background:var(--fluor);color:#000;}
+
+..........@media(max-width:1024px){.two{grid-template-columns:1fr;}.grid3{grid-template-columns:1fr;}.values{grid-template-columns:1fr;}.}
+    @media(max-width:768px){.page-hero{padding:3.5rem 1.25rem 1.25rem;}.wrap{padding:0 1.25rem 4rem;}.page-title{font-size:2rem;}..}
+    @view-transition{navigation:auto;}
+  
+    /* Sticky nav scroll offset */
+    [id] { scroll-margin-top: 82px; }
+
+    @media (max-width: 860px) {
+      .page-hero { padding: 3rem 1.5rem 1.5rem; }
+      .page-title { font-size: 2.2rem; }
+      .wrap { padding: 0 1.5rem 3rem; }
+      .two, .grid3, .values { grid-template-columns: 1fr !important; gap: 1.25rem; }
+    }
+    @media (max-width: 480px) {
+      .page-title { font-size: 1.8rem; }
+      .wrap { padding: 0 1rem 2.5rem; }
+    }</style>
+</head>
+<body>
+<div class="landing-wrapper">
+  <div class="bg-gradient"></div>
+  <div class="grid-overlay"></div>
+  <div class="content-wrapper">
+
+
+    <!-- RBP_NAV -->
+
+
+    <header class="page-hero">
+      <div class="badge"><span class="badge-dot"></span><span data-i18n="badge">Nuestra historia • Producto creado para entrenadores</span></div>
+      <h1 class="page-title"><span data-i18n="title1">Acerca de</span> <span class="fluor" data-i18n="title2">RugbyBoard Pro</span></h1>
+      <p class="page-sub" data-i18n="subtitle">Somos un equipo que vive el rugby desde adentro. Creamos este software para que entrenadores y staff puedan diseñar jugadas más rápido, enseñarlas mejor y mejorar el rendimiento del equipo.</p>
+    </header>
+
+    <main class="wrap">
+      <section class="panel">
+        <div class="two">
+          <div class="story">
+            <h2 data-i18n="whyTitle">¿Por qué lo desarrollamos?</h2>
+            <p data-i18n="whyText">Porque en el día a día, los entrenadores necesitan herramientas simples, rápidas y visuales para comunicar ideas. Entre pizarras, capturas, PDFs y mensajes, la información se pierde. RugbyBoard Pro nace para ordenar el sistema: crear, animar y compartir jugadas en minutos.</p>
+            <div class="highlight"><i class="fas fa-bullseye"></i><div><strong data-i18n="focusTitle">Nuestro enfoque</strong><div data-i18n="focusText">Claridad + velocidad + consistencia táctica.</div></div></div>
+          </div>
+          <div class="story">
+            <h2 data-i18n="whoTitle">¿Quiénes somos?</h2>
+            <p data-i18n="whoText">Un equipo híbrido: entrenadores, analistas y desarrolladores. Combinamos experiencia en cancha con tecnología para construir una plataforma realmente útil en el entrenamiento.</p>
+            <div class="highlight" style="border-color:rgba(200,255,0,0.15);"><i class="fas fa-people-group"></i><div><strong data-i18n="teamTitle">Hecho con mentalidad de staff</strong><div data-i18n="teamText">Cada feature se diseña pensando en la práctica real.</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title" data-i18n="mvTitle">Misión, Visión y Propósito</div>
+        <div class="panel-sub" data-i18n="mvText">Lo que nos guía y hacia dónde vamos.</div>
+        <div class="grid3">
+          <div class="card"><div class="card-icon"><i class="fas fa-flag"></i></div><h3 data-i18n="missionTitle">Misión</h3><p data-i18n="missionText">Simplificar la creación y comunicación de estrategias para que cada equipo entrene con mayor claridad y eficiencia.</p></div>
+          <div class="card"><div class="card-icon"><i class="fas fa-eye"></i></div><h3 data-i18n="visionTitle">Visión</h3><p data-i18n="visionText">Ser la plataforma de referencia para entrenadores de rugby en todo el mundo, desde amateur hasta alto rendimiento.</p></div>
+          <div class="card"><div class="card-icon"><i class="fas fa-heart"></i></div><h3 data-i18n="purposeTitle">Propósito</h3><p data-i18n="purposeText">Elevar el nivel de aprendizaje y ejecución táctica, haciendo la información accesible para todos.</p></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title" data-i18n="valuesTitle">Valores</div>
+        <div class="panel-sub" data-i18n="valuesText">Principios que aplicamos al producto y al trabajo diario.</div>
+        <div class="values">
+          <div class="value"><div class="top"><div class="dot">1</div><h4 data-i18n="val1Title">Claridad</h4></div><p data-i18n="val1Text">Lo visual tiene que entenderse rápido: menos ruido, más mensaje.</p></div>
+          <div class="value"><div class="top"><div class="dot">2</div><h4 data-i18n="val2Title">Disciplina</h4></div><p data-i18n="val2Text">Consistencia táctica y orden: una biblioteca clara mejora el rendimiento.</p></div>
+          <div class="value"><div class="top"><div class="dot">3</div><h4 data-i18n="val3Title">Evolución</h4></div><p data-i18n="val3Text">Escuchamos feedback del staff y mejoramos el sistema en cada versión.</p></div>
+          <div class="value"><div class="top"><div class="dot">4</div><h4 data-i18n="val4Title">Trabajo en equipo</h4></div><p data-i18n="val4Text">El rugby es coordinación: el software también tiene que ayudar a sincronizar.</p></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="cta-row">
+          <div><strong data-i18n="ctaTitle">¿Querés conocer el sistema por dentro?</strong><br/><span data-i18n="ctaText">Mirá la documentación o empezá con los video tutoriales.</span></div>
+          <div class="btn-group">
+            <a class="btn" href="document.html"><i class="fas fa-book"></i><span data-i18n="ctaDocs">Ir a Docs</span></a>
+            <a class="btn" href="demo.html"><i class="fas fa-play"></i><span data-i18n="ctaDemo">Ver Demo</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- RBP_FOOTER -->
+
+  </div>
+</div>
+
+<script src="rbp-shared.js"></script>
+</body>
+</html>
