@@ -1,6 +1,6 @@
 /**
- * rbp-shared.js — RugbyBoard Pro v2.2
- * Nav simplificado · Footer · i18n completo · Responsive
+ * rbp-shared.js — RugbyBoard Pro v2.3
+ * Nav 3 links · Flags visibles · Logo compacto mobile · Footer completo · i18n full
  */
 (function () {
   'use strict';
@@ -11,15 +11,15 @@
   const css = `
 @view-transition { navigation: auto; }
 
-/* ── NAV ── */
+/* ── NAV base ── */
 #rbpNav {
   width: 100%;
   padding: 0 2.5rem;
-  height: 68px;
+  height: 64px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(1,4,9,0.95);
+  background: rgba(1,4,9,0.96);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(200,255,0,0.12);
@@ -31,26 +31,28 @@
   box-sizing: border-box;
 }
 #rbpNav.rbp-scrolled {
-  box-shadow: 0 4px 40px rgba(0,0,0,.8);
-  background: rgba(1,4,9,0.98);
+  box-shadow: 0 4px 40px rgba(0,0,0,.85);
+  background: rgba(1,4,9,1);
 }
 #rbpNav a { text-decoration: none; }
 
 /* Logo */
 .rbp-logo { display: flex; align-items: center; flex-shrink: 0; }
-.rbp-logo img { height: 46px; width: auto; display: block; transition: opacity .2s; }
-.rbp-logo:hover img { opacity: .82; }
+.rbp-logo img { height: 44px; width: auto; display: block; transition: opacity .2s; }
+.rbp-logo:hover img { opacity: .8; }
 
-/* Desktop links */
-.rbp-nav-menu { display: flex; gap: 1.6rem; align-items: center; }
+/* Desktop menu */
+.rbp-nav-menu { display: flex; gap: 1.5rem; align-items: center; }
+
+/* Nav links */
 .rbp-nav-link {
-  color: rgba(240,246,252,.6);
+  color: rgba(240,246,252,.58);
   font-weight: 600; font-size: .78rem;
   letter-spacing: .05em; text-transform: uppercase;
   transition: color .2s; position: relative; white-space: nowrap;
 }
 .rbp-nav-link::after {
-  content: ''; position: absolute; bottom: -4px; left: 0;
+  content: ''; position: absolute; bottom: -3px; left: 0;
   width: 0; height: 2px; background: #c8ff00;
   border-radius: 2px; transition: width .2s;
 }
@@ -59,73 +61,75 @@
 .rbp-nav-link:hover::after,
 .rbp-nav-link.rbp-active::after { width: 100%; }
 
-/* CTA */
+/* CTA button */
 .rbp-nav-cta {
-  padding: .55rem 1.15rem;
+  padding: .52rem 1.1rem;
   background: #c8ff00; color: #000;
-  border: none; border-radius: 9px;
+  border: none; border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 800; font-size: .75rem;
   letter-spacing: .05em; text-transform: uppercase;
   cursor: pointer; white-space: nowrap;
   transition: all .22s;
-  box-shadow: 0 0 16px rgba(200,255,0,.4);
+  box-shadow: 0 0 16px rgba(200,255,0,.45);
 }
 .rbp-nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 28px rgba(200,255,0,.6);
+  box-shadow: 0 0 28px rgba(200,255,0,.65);
 }
 
-/* ── LANG SWITCH — flags with visible background ── */
+/* ── LANG BUTTONS — clearly visible ── */
 .rbp-lang-switch {
-  display: flex; gap: .25rem; align-items: center; margin-left: .5rem;
+  display: flex; gap: .3rem; align-items: center; margin-left: .6rem;
 }
 .rbp-lang-btn {
-  width: 30px; height: 30px; border-radius: 7px;
-  border: 1.5px solid rgba(200,255,0,.25);
-  background: rgba(200,255,0,.08);
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  font-size: 16px; line-height: 1; padding: 0;
-  transition: all .18s; position: relative;
+  width: 34px; height: 28px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(200,255,0,.3);
+  background: rgba(200,255,0,.1);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0; line-height: 1;
+  transition: all .18s;
+  font-size: 17px;     /* emoji size */
+  font-family: 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif;
 }
 .rbp-lang-btn:hover {
-  border-color: rgba(200,255,0,.7);
-  background: rgba(200,255,0,.18);
-  transform: scale(1.1);
+  border-color: #c8ff00;
+  background: rgba(200,255,0,.22);
+  transform: scale(1.08);
 }
 .rbp-lang-btn.rbp-is-active {
   border-color: #c8ff00;
-  background: rgba(200,255,0,.22);
-  box-shadow: 0 0 10px rgba(200,255,0,.4);
+  background: rgba(200,255,0,.25);
+  box-shadow: 0 0 10px rgba(200,255,0,.45);
 }
-/* Force emoji rendering */
-.rbp-lang-btn span { font-style: normal; }
 
-/* Burger */
+/* ── BURGER ── */
 .rbp-burger-btn {
-  display: none; width: 40px; height: 40px;
-  border-radius: 9px;
-  border: 1.5px solid rgba(200,255,0,.25);
-  background: rgba(200,255,0,.06);
+  display: none;
+  width: 38px; height: 38px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(200,255,0,.3);
+  background: rgba(200,255,0,.08);
   cursor: pointer; align-items: center; justify-content: center;
   transition: all .2s; flex-shrink: 0;
 }
 .rbp-burger-btn:hover {
-  border-color: #c8ff00;
-  background: rgba(200,255,0,.14);
+  border-color: #c8ff00; background: rgba(200,255,0,.16);
 }
-.rbp-burger-icon { position: relative; width: 18px; height: 13px; display: block; }
+.rbp-burger-icon { position: relative; width: 16px; height: 12px; display: block; }
 .rbp-burger-line {
   position: absolute; left: 0; width: 100%; height: 2px;
   background: #f0f6fc; border-radius: 2px;
   transition: transform .22s, top .22s, opacity .18s;
 }
 .rbp-burger-line.l1 { top: 0; }
-.rbp-burger-line.l2 { top: 6px; }
-.rbp-burger-line.l3 { top: 12px; }
-.rbp-burger-btn.rbp-is-open .rbp-burger-line.l1 { top: 6px; transform: rotate(45deg); }
+.rbp-burger-line.l2 { top: 5px; }
+.rbp-burger-line.l3 { top: 10px; }
+.rbp-burger-btn.rbp-is-open .rbp-burger-line.l1 { top: 5px; transform: rotate(45deg); }
 .rbp-burger-btn.rbp-is-open .rbp-burger-line.l2 { opacity: 0; }
-.rbp-burger-btn.rbp-is-open .rbp-burger-line.l3 { top: 6px; transform: rotate(-45deg); }
+.rbp-burger-btn.rbp-is-open .rbp-burger-line.l3 { top: 5px; transform: rotate(-45deg); }
 
 /* Overlay */
 .rbp-menu-overlay {
@@ -138,9 +142,9 @@
 /* Mobile drawer */
 .rbp-mobile-drawer {
   position: fixed; top: 0; right: 0;
-  width: min(290px,88vw); height: 100dvh;
-  background: #0b0f17;
-  border-left: 1px solid rgba(200,255,0,.12);
+  width: min(280px,82vw); height: 100dvh;
+  background: #0a0d14;
+  border-left: 1px solid rgba(200,255,0,.14);
   z-index: 999;
   transform: translateX(100%);
   transition: transform .28s cubic-bezier(.4,0,.2,1);
@@ -149,39 +153,41 @@
 }
 .rbp-mobile-drawer.rbp-is-open { transform: translateX(0); }
 .rbp-mobile-close {
-  position: absolute; top: .9rem; right: .9rem;
-  width: 34px; height: 34px; border-radius: 7px;
-  border: 1px solid rgba(200,255,0,.25);
-  background: rgba(200,255,0,.06);
+  position: absolute; top: .85rem; right: .85rem;
+  width: 32px; height: 32px; border-radius: 7px;
+  border: 1px solid rgba(200,255,0,.28);
+  background: rgba(200,255,0,.07);
   color: #f0f6fc; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
-  font-size: .95rem; transition: all .18s;
+  font-size: .88rem; transition: all .18s;
 }
 .rbp-mobile-close:hover { border-color: #c8ff00; color: #c8ff00; }
 .rbp-mobile-link {
   display: flex; justify-content: space-between; align-items: center;
-  padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.06);
-  color: #f0f6fc; text-decoration: none;
-  font-weight: 600; font-size: .85rem;
+  padding: .82rem 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  color: rgba(240,246,252,.85); text-decoration: none;
+  font-weight: 600; font-size: .84rem;
   letter-spacing: .05em; text-transform: uppercase; transition: color .18s;
 }
 .rbp-mobile-link:hover,
 .rbp-mobile-link.rbp-active { color: #c8ff00; }
-.rbp-mobile-link .rbp-chev { opacity: .28; font-size: .9rem; }
+.rbp-mobile-link .rbp-chev { opacity: .28; font-size: .85rem; }
 .rbp-mobile-cta {
-  display: block; width: 100%; margin-top: 1.4rem; padding: .85rem;
-  background: #c8ff00; color: #000; border: none; border-radius: 9px;
+  display: block; width: 100%; margin-top: 1.4rem; padding: .82rem;
+  background: #c8ff00; color: #000; border: none; border-radius: 8px;
   font-family: 'Montserrat', sans-serif; font-weight: 800;
-  font-size: .85rem; letter-spacing: .05em; text-transform: uppercase;
+  font-size: .84rem; letter-spacing: .05em; text-transform: uppercase;
   cursor: pointer; text-align: center; transition: opacity .18s;
 }
 .rbp-mobile-cta:hover { opacity: .86; }
 .rbp-mobile-lang-row {
   display: flex; gap: .4rem; align-items: center; margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 .rbp-mobile-lang-label {
-  font-size: .68rem; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: rgba(240,246,252,.4); margin-right: .3rem;
+  font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(240,246,252,.38);
+  margin-right: .2rem;
 }
 
 /* ── FOOTER ── */
@@ -195,15 +201,15 @@
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 3rem; margin-bottom: 3rem;
 }
-.rbp-footer-logo-img { height: 46px; width: auto; display: block; margin-bottom: 1rem; }
-.rbp-footer-description { color: rgba(240,246,252,.45); font-size: .8rem; line-height: 1.75; max-width: 230px; }
+.rbp-footer-logo-img { height: 44px; width: auto; display: block; margin-bottom: 1rem; }
+.rbp-footer-description { color: rgba(240,246,252,.44); font-size: .8rem; line-height: 1.75; max-width: 230px; }
 .rbp-footer-column h4 {
   font-size: .68rem; font-weight: 800; letter-spacing: .1em;
   text-transform: uppercase; color: #c8ff00; margin-bottom: 1rem;
 }
 .rbp-footer-links { display: flex; flex-direction: column; gap: .6rem; }
 .rbp-footer-links a {
-  color: rgba(240,246,252,.45); text-decoration: none;
+  color: rgba(240,246,252,.44); text-decoration: none;
   font-size: .8rem; font-weight: 500; transition: color .18s;
 }
 .rbp-footer-links a:hover { color: #c8ff00; }
@@ -212,26 +218,41 @@
   padding-top: 2rem; border-top: 1px solid rgba(255,255,255,.06);
   flex-wrap: wrap; gap: 1rem;
 }
-.rbp-copyright { color: rgba(240,246,252,.3); font-size: .74rem; }
+.rbp-copyright { color: rgba(240,246,252,.28); font-size: .74rem; }
 .rbp-social-links { display: flex; gap: .45rem; }
 .rbp-social-icon {
   width: 34px; height: 34px; border-radius: 8px;
   border: 1px solid rgba(255,255,255,.06);
   background: rgba(255,255,255,.02);
   display: flex; align-items: center; justify-content: center;
-  color: rgba(240,246,252,.4); text-decoration: none; font-size: .8rem;
+  color: rgba(240,246,252,.38); text-decoration: none; font-size: .8rem;
   transition: all .18s;
 }
 .rbp-social-icon:hover { border-color: #c8ff00; color: #c8ff00; background: rgba(200,255,0,.08); }
 
-/* ── RESPONSIVE — Nav ── */
-@media (max-width: 900px) {
+/* ══════════════════════════════════════════════
+   RESPONSIVE NAV
+══════════════════════════════════════════════ */
+
+/* Tablet: hide links, show burger */
+@media (max-width: 860px) {
   #rbpNav { padding: 0 1.25rem; }
   .rbp-nav-menu { display: none; }
   .rbp-burger-btn { display: inline-flex; }
 }
 
-/* ── RESPONSIVE — Footer ── */
+/* Mobile: shrink logo so burger fits */
+@media (max-width: 480px) {
+  #rbpNav { height: 56px; padding: 0 .9rem; }
+  .rbp-logo img { height: 32px; }
+}
+@media (max-width: 360px) {
+  .rbp-logo img { height: 28px; }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE FOOTER
+══════════════════════════════════════════════ */
 @media (max-width: 860px) {
   #rbpFooter { padding: 3rem 1.5rem 2rem; }
   .rbp-footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -240,10 +261,11 @@
   #rbpFooter { padding: 2.5rem 1rem 1.5rem; }
   .rbp-footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
   .rbp-footer-bottom { flex-direction: column; text-align: center; }
+  .rbp-footer-description { max-width: 100%; }
 }
 
-/* ── Anchor offset for sticky nav ── */
-[id] { scroll-margin-top: 80px; }
+/* Anchor offset */
+[id] { scroll-margin-top: 72px; }
 `;
 
   const st = document.createElement('style');
@@ -256,15 +278,11 @@
   ══════════════════════════════════════════════ */
   const T = {
     es: {
-      /* nav */
       navAbout:'Acerca de', navDemo:'Demo', navContact:'Contacto', navCta:'Comenzar Gratis',
-      /* footer */
       footerDesc:'La plataforma líder para diseño de estrategias y tácticas de rugby.',
       footerProduct:'Producto', footerResources:'Recursos', footerCompany:'Compañía',
-      navFeatures:'Características', navPricing:'Precios', navSupport:'Soporte',
-      navDocs:'Docs', footerLegal:'Legal',
+      navFeatures:'Características', navPricing:'Precios', navSupport:'Soporte', navDocs:'Docs', footerLegal:'Legal',
       footerText:'© 2025 RugbyBoard Pro by JJwebs Academy. Todos los derechos reservados.',
-      /* index */
       heroBadge:'Generación Beta — versión anticipada',
       heroTitle1:'Revoluciona tu', heroTitle2:'Estrategia de Rugby',
       heroSubtitle:'Diseña jugadas profesionales, anima tácticas complejas y comparte estrategias con tu equipo. Todo en una plataforma intuitiva y poderosa.',
@@ -272,24 +290,19 @@
       stat1Label:'Entrenadores Activos', stat2Label:'Jugadas Creadas', stat3Label:'Países',
       featuresTitle:'Herramientas Pro para Entrenadores',
       featuresSubtitle:'Todo lo que necesitas para crear estrategias ganadoras y comunicarlas de manera efectiva',
-      f1Title:'Gestión de Equipos', f1Desc:'Organiza múltiples equipos con jugadores personalizables. Define posiciones, asigna números y configura colores únicos.',
-      f2Title:'Herramientas de Dibujo Pro', f2Desc:'Crea diagramas precisos con flechas inteligentes, líneas de movimiento y formas vectoriales.',
-      f3Title:'Animación e Interacción', f3Desc:'Aporta dinamismo a tus jugadas capturando cada movimiento en el tablero.',
-      f4Title:'Biblioteca de Jugadas', f4Desc:'Almacena y organiza todas tus estrategias. Busca, filtra y reutiliza jugadas.',
-      f5Title:'Personalización Total', f5Desc:'Adapta cada aspecto visual: campos, jugadores, colores de equipo y estilos.',
-      f6Title:'Colaboración en Tiempo Real', f6Desc:'Comparte jugadas con tu staff técnico. Trabaja simultáneamente.',
-      pricingTitle:'Planes Para Tu Equipo',
-      pricingSubtitle:'Elige el plan que mejor se adapte. Todos incluyen prueba gratuita.',
+      f1Title:'Gestión de Equipos', f1Desc:'Organiza múltiples equipos con jugadores personalizables. Define posiciones, asigna números y configura colores únicos para cada formación.',
+      f2Title:'Herramientas de Dibujo Pro', f2Desc:'Crea diagramas precisos con flechas inteligentes, líneas de movimiento y formas vectoriales. Perfecto para estrategias complejas.',
+      f3Title:'Animación e Interacción', f3Desc:'Aporta dinamismo a tus jugadas capturando cada movimiento en el tablero. Las animaciones generan un impacto visual atractivo.',
+      f4Title:'Biblioteca de Jugadas', f4Desc:'Almacena y organiza todas tus estrategias. Busca, filtra y reutiliza jugadas guardadas con etiquetas personalizadas.',
+      f5Title:'Personalización Total', f5Desc:'Adapta cada aspecto visual: campos, jugadores, colores de equipo y estilos de dibujo según tu marca.',
+      f6Title:'Colaboración en Tiempo Real', f6Desc:'Comparte jugadas con tu staff técnico. Trabaja simultáneamente y recibe feedback instantáneo de tu equipo.',
+      pricingTitle:'Planes Para Tu Equipo', pricingSubtitle:'Elige el plan que mejor se adapte. Todos incluyen prueba gratuita.',
       perMonth:'/mes', starterDesc:'Perfecto para entrenadores individuales',
-      mostPopular:'Más popular', proName:'Profesional',
-      proDesc:'Para entrenadores serios y staff técnico',
+      mostPopular:'Más popular', proName:'Profesional', proDesc:'Para entrenadores serios y staff técnico',
       clubDesc:'Para organizaciones y clubes deportivos',
-      s1:'Sin edición de equipos', s2:'5 jugadas guardadas', s3:'Exportar como imagen',
-      s4:'Animaciones básicas', s5:'Soporte por email',
-      p1:'Edición de equipos', p2:'Jugadas ilimitadas', p3:'Exportar y compartir jugadas',
-      p4:'Animaciones avanzadas', p5:'Biblioteca compartida', p6:'Soporte prioritario',
-      c1:'Todo lo de Profesional', c2:'12 usuarios incluidos', c3:'10 horas capacitación PRO',
-      c4:'Marca personalizada', c5:'Integración web y redes', c6:'Soporte 24/7',
+      s1:'Sin edición de equipos', s2:'5 jugadas guardadas', s3:'Exportar como imagen', s4:'Animaciones básicas', s5:'Soporte por email',
+      p1:'Edición de equipos', p2:'Jugadas ilimitadas', p3:'Exportar y compartir jugadas', p4:'Animaciones avanzadas', p5:'Biblioteca compartida', p6:'Soporte prioritario',
+      c1:'Todo lo de Profesional', c2:'12 usuarios incluidos', c3:'10 horas capacitación PRO', c4:'Marca personalizada', c5:'Integración web y redes', c6:'Soporte 24/7',
       Free:'GRATIS', startTrial:'Comenzar prueba', contactSales:'Contactar ventas',
       testimonialQuote:'"RugbyBoard Pro ha transformado la forma en que preparamos nuestras estrategias. Las animaciones nos permiten comunicar jugadas complejas de manera profesional."',
       testimonialAuthor:'Guido Quadri', testimonialRole:'Entrenador Principal — Bologna Rugby Club',
@@ -301,8 +314,7 @@
       navAbout:'About', navDemo:'Demo', navContact:'Contact', navCta:'Start Free',
       footerDesc:'The leading platform for rugby strategy and tactics design.',
       footerProduct:'Product', footerResources:'Resources', footerCompany:'Company',
-      navFeatures:'Features', navPricing:'Pricing', navSupport:'Support',
-      navDocs:'Docs', footerLegal:'Legal',
+      navFeatures:'Features', navPricing:'Pricing', navSupport:'Support', navDocs:'Docs', footerLegal:'Legal',
       footerText:'© 2025 RugbyBoard Pro by JJwebs Academy. All rights reserved.',
       heroBadge:'Beta Generation — Early Access',
       heroTitle1:'Revolutionize your', heroTitle2:'Rugby Strategy',
@@ -311,23 +323,19 @@
       stat1Label:'Active Coaches', stat2Label:'Plays Created', stat3Label:'Countries',
       featuresTitle:'Pro Tools for Coaches',
       featuresSubtitle:'Everything you need to build winning strategies and communicate them effectively',
-      f1Title:'Team Management', f1Desc:'Organize multiple teams with customizable players. Set positions, assign numbers and unique colors.',
-      f2Title:'Pro Drawing Tools', f2Desc:'Create precise diagrams with smart arrows, movement lines and vector shapes.',
-      f3Title:'Animation & Interaction', f3Desc:'Bring plays to life by capturing every movement on the board.',
-      f4Title:'Play Library', f4Desc:'Store and organize all your strategies. Search, filter and reuse plays.',
-      f5Title:'Full Customization', f5Desc:'Customize every visual detail: fields, players, team colors and styles.',
-      f6Title:'Real-Time Collaboration', f6Desc:'Share plays with your coaching staff. Work simultaneously.',
-      pricingTitle:'Plans Built for Your Team',
-      pricingSubtitle:'Choose the plan that fits your needs. All include a free trial.',
+      f1Title:'Team Management', f1Desc:'Organize multiple teams with customizable players. Set positions, assign numbers and configure unique colors for each lineup.',
+      f2Title:'Pro Drawing Tools', f2Desc:'Create precise diagrams with smart arrows, movement lines and vector shapes. Perfect for complex strategies.',
+      f3Title:'Animation & Interaction', f3Desc:'Bring plays to life by capturing every movement on the board. Animations create a visually engaging experience.',
+      f4Title:'Play Library', f4Desc:'Store and organize all your strategies. Search, filter and reuse saved plays with custom tags.',
+      f5Title:'Full Customization', f5Desc:'Customize every visual detail: fields, players, team colors and drawing styles to match your brand.',
+      f6Title:'Real-Time Collaboration', f6Desc:'Share plays with your coaching staff. Work simultaneously and get instant feedback from your team.',
+      pricingTitle:'Plans Built for Your Team', pricingSubtitle:'Choose the plan that fits your needs. All include a free trial.',
       perMonth:'/month', starterDesc:'Perfect for individual coaches',
-      mostPopular:'Most Popular', proName:'Professional',
-      proDesc:'For serious coaches and staff', clubDesc:'For sports clubs and organizations',
-      s1:'No team editing', s2:'5 saved plays', s3:'Export as image',
-      s4:'Basic animations', s5:'Email support',
-      p1:'Team editing', p2:'Unlimited plays', p3:'Export & share plays',
-      p4:'Advanced animations', p5:'Shared library', p6:'Priority support',
-      c1:'Everything in Professional', c2:'12 users included', c3:'10 hours PRO training',
-      c4:'Custom branding', c5:'Website & social integration', c6:'24/7 support',
+      mostPopular:'Most Popular', proName:'Professional', proDesc:'For serious coaches and staff',
+      clubDesc:'For sports clubs and organizations',
+      s1:'No team editing', s2:'5 saved plays', s3:'Export as image', s4:'Basic animations', s5:'Email support',
+      p1:'Team editing', p2:'Unlimited plays', p3:'Export & share plays', p4:'Advanced animations', p5:'Shared library', p6:'Priority support',
+      c1:'Everything in Professional', c2:'12 users included', c3:'10 hours PRO training', c4:'Custom branding', c5:'Website & social integration', c6:'24/7 support',
       Free:'FREE', startTrial:'Start Trial', contactSales:'Contact Sales',
       testimonialQuote:'"RugbyBoard Pro completely changed how we prepare our strategies. Animations help us communicate complex plays professionally."',
       testimonialAuthor:'Guido Quadri', testimonialRole:'Head Coach — Bologna Rugby Club',
@@ -339,33 +347,28 @@
       navAbout:'Chi siamo', navDemo:'Demo', navContact:'Contatto', navCta:'Inizia Gratis',
       footerDesc:'La piattaforma leader per progettare strategie e tattiche di rugby.',
       footerProduct:'Prodotto', footerResources:'Risorse', footerCompany:'Azienda',
-      navFeatures:'Funzionalità', navPricing:'Prezzi', navSupport:'Supporto',
-      navDocs:'Docs', footerLegal:'Legale',
+      navFeatures:'Funzionalità', navPricing:'Prezzi', navSupport:'Supporto', navDocs:'Docs', footerLegal:'Legale',
       footerText:'© 2025 RugbyBoard Pro by JJwebs Academy. Tutti i diritti riservati.',
       heroBadge:'Generazione Beta — Accesso Anticipato',
       heroTitle1:'Rivoluziona la tua', heroTitle2:'Strategia di Rugby',
-      heroSubtitle:'Progetta schemi professionali, anima tattiche complesse e condividi strategie con la tua squadra. Tutto in una piattaforma intuitiva e potente.',
+      heroSubtitle:"Progetta schemi professionali, anima tattiche complesse e condividi strategie con la tua squadra. Tutto in una piattaforma intuitiva e potente.",
       ctaPrimary:'Prova Gratis ora', ctaSecondary:'Guarda la Demo Live',
       stat1Label:'Allenatori Attivi', stat2Label:'Schemi Creati', stat3Label:'Paesi',
       featuresTitle:'Strumenti Pro per Allenatori',
       featuresSubtitle:'Tutto ciò che ti serve per creare strategie vincenti e comunicarle efficacemente',
-      f1Title:'Gestione Squadre', f1Desc:'Organizza più squadre con giocatori personalizzabili. Ruoli, numeri e colori unici.',
-      f2Title:'Strumenti di Disegno Pro', f2Desc:'Crea diagrammi precisi con frecce intelligenti e linee di movimento.',
-      f3Title:'Animazione e Interazione', f3Desc:"Dai vita agli schemi catturando ogni movimento sulla lavagna.",
-      f4Title:'Libreria di Schemi', f4Desc:'Archivia e organizza tutte le strategie. Cerca, filtra e riutilizza.',
-      f5Title:'Personalizzazione Totale', f5Desc:'Personalizza campi, giocatori, colori e stili secondo il tuo brand.',
-      f6Title:'Collaborazione in Tempo Reale', f6Desc:'Condividi schemi con lo staff. Lavora in simultanea.',
-      pricingTitle:'Piani per la Tua Squadra',
-      pricingSubtitle:'Scegli il piano più adatto. Tutti includono una prova gratuita.',
+      f1Title:'Gestione Squadre', f1Desc:'Organizza più squadre con giocatori personalizzabili. Ruoli, numeri e colori unici per ogni formazione.',
+      f2Title:'Strumenti di Disegno Pro', f2Desc:'Crea diagrammi precisi con frecce intelligenti e linee di movimento. Perfetto per strategie complesse.',
+      f3Title:'Animazione e Interazione', f3Desc:"Dai vita agli schemi catturando ogni movimento sulla lavagna. Le animazioni rendono l'esperienza visivamente coinvolgente.",
+      f4Title:'Libreria di Schemi', f4Desc:'Archivia e organizza tutte le strategie. Cerca, filtra e riutilizza gli schemi salvati con tag personalizzati.',
+      f5Title:'Personalizzazione Totale', f5Desc:'Personalizza campi, giocatori, colori della squadra e stili di disegno secondo il tuo brand.',
+      f6Title:'Collaborazione in Tempo Reale', f6Desc:'Condividi gli schemi con lo staff tecnico. Lavora in simultanea e ricevi feedback immediato.',
+      pricingTitle:'Piani per la Tua Squadra', pricingSubtitle:'Scegli il piano più adatto. Tutti includono una prova gratuita.',
       perMonth:'/mese', starterDesc:'Perfetto per allenatori individuali',
-      mostPopular:'Più Popolare', proName:'Professionale',
-      proDesc:'Per allenatori seri e staff tecnico', clubDesc:'Per club sportivi e organizzazioni',
-      s1:'Nessuna modifica squadre', s2:'5 schemi salvati', s3:'Esporta come immagine',
-      s4:'Animazioni base', s5:'Supporto via email',
-      p1:'Modifica squadre', p2:'Schemi illimitati', p3:'Esporta e condividi schemi',
-      p4:'Animazioni avanzate', p5:'Libreria condivisa', p6:'Supporto prioritario',
-      c1:'Tutto di Professionale', c2:'12 utenti inclusi', c3:'10 ore formazione PRO',
-      c4:'Brand personalizzato', c5:'Integrazione sito e social', c6:'Supporto 24/7',
+      mostPopular:'Più Popolare', proName:'Professionale', proDesc:'Per allenatori seri e staff tecnico',
+      clubDesc:'Per club sportivi e organizzazioni',
+      s1:'Nessuna modifica squadre', s2:'5 schemi salvati', s3:'Esporta come immagine', s4:'Animazioni base', s5:'Supporto via email',
+      p1:'Modifica squadre', p2:'Schemi illimitati', p3:'Esporta e condividi schemi', p4:'Animazioni avanzate', p5:'Libreria condivisa', p6:'Supporto prioritario',
+      c1:'Tutto di Professionale', c2:'12 utenti inclusi', c3:'10 ore formazione PRO', c4:'Brand personalizzato', c5:'Integrazione sito e social', c6:'Supporto 24/7',
       Free:'GRATIS', startTrial:'Avvia la Prova', contactSales:'Contatta le Vendite',
       testimonialQuote:'"RugbyBoard Pro ha trasformato il modo in cui prepariamo le nostre strategie. Le animazioni ci permettono di comunicare schemi complessi professionalmente."',
       testimonialAuthor:'Guido Quadri', testimonialRole:'Head Coach — Bologna Rugby Club',
@@ -379,15 +382,29 @@
      3. ACTIVE PAGE
   ══════════════════════════════════════════════ */
   const page = location.pathname.split('/').pop() || 'index.html';
-  const isActive = href => {
-    if (href.startsWith('#')) return false;
-    const h = href.split('/').pop().split('#')[0];
-    return h === page || (page === '' && h === 'index.html');
+  const isActive = h => {
+    if (h.startsWith('#')) return false;
+    const p = h.split('/').pop().split('#')[0];
+    return p === page || (page === '' && p === 'index.html');
   };
 
   /* ══════════════════════════════════════════════
-     4. NAV — 3 links only: Acerca de, Demo, Contacto
+     4. BUILD NAV — only 3 links
   ══════════════════════════════════════════════ */
+  let currentLang = localStorage.getItem('rbp-lang') || 'es';
+
+  const LANGS = [
+    { code:'es', flag:'🇦🇷', label:'Español' },
+    { code:'en', flag:'🇺🇸', label:'English' },
+    { code:'it', flag:'🇮🇹', label:'Italiano' },
+  ];
+
+  function langBtns() {
+    return LANGS.map(l =>
+      `<button class="rbp-lang-btn${currentLang===l.code?' rbp-is-active':''}" data-rbp-lang="${l.code}" title="${l.label}" type="button">${l.flag}</button>`
+    ).join('');
+  }
+
   function buildNav(d) {
     const links = [
       { href:'acercade.html', key:'navAbout'   },
@@ -403,19 +420,15 @@
 
     return `
 <nav id="rbpNav" role="navigation" aria-label="Navegación principal">
-  <a class="rbp-logo" href="index.html" aria-label="RugbyBoard Pro">
-    <img src="rbp_Italic.png" alt="RugbyBoard Pro" width="145" height="46"/>
+  <a class="rbp-logo" href="index.html" aria-label="RugbyBoard Pro — Inicio">
+    <img src="rbp_Italic.png" alt="RugbyBoard Pro" width="140" height="44"/>
   </a>
   <div class="rbp-nav-menu">
     ${desk}
     <a href="https://rugbyboardpro.com/boardpro.html" rel="noopener noreferrer">
       <button class="rbp-nav-cta" data-rbp-i18n="navCta">${d.navCta}</button>
     </a>
-    <div class="rbp-lang-switch" aria-label="Idioma / Language">
-      <button class="rbp-lang-btn${' rbp-is-active'.repeat(+(currentLang==='es'))}" data-rbp-lang="es" title="Español" type="button"><span>🇦🇷</span></button>
-      <button class="rbp-lang-btn${' rbp-is-active'.repeat(+(currentLang==='en'))}" data-rbp-lang="en" title="English" type="button"><span>🇺🇸</span></button>
-      <button class="rbp-lang-btn${' rbp-is-active'.repeat(+(currentLang==='it'))}" data-rbp-lang="it" title="Italiano" type="button"><span>🇮🇹</span></button>
-    </div>
+    <div class="rbp-lang-switch" aria-label="Idioma">${langBtns()}</div>
   </div>
   <button class="rbp-burger-btn" id="rbpBurger" aria-label="Abrir menú" aria-expanded="false" type="button">
     <span class="rbp-burger-icon" aria-hidden="true">
@@ -426,23 +439,21 @@
   </button>
 </nav>
 <div class="rbp-menu-overlay" id="rbpOverlay"></div>
-<div class="rbp-mobile-drawer" id="rbpDrawer" role="dialog" aria-modal="true" aria-label="Menú">
-  <button class="rbp-mobile-close" id="rbpDrawerClose" type="button" aria-label="Cerrar">✕</button>
+<div class="rbp-mobile-drawer" id="rbpDrawer" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+  <button class="rbp-mobile-close" id="rbpDrawerClose" type="button" aria-label="Cerrar menú">✕</button>
   ${mob}
-  <a href="https://rugbyboardpro.com/boardpro.html" rel="noopener noreferrer">
+  <a href="https://rugbyboardpro.com/boardpro.html" rel="noopener noreferrer" style="display:block">
     <button class="rbp-mobile-cta" data-rbp-i18n="navCta">${d.navCta}</button>
   </a>
   <div class="rbp-mobile-lang-row">
     <span class="rbp-mobile-lang-label">Lang</span>
-    <button class="rbp-lang-btn${' rbp-is-active'.repeat(+(currentLang==='es'))}" data-rbp-lang="es" title="Español" type="button"><span>🇦🇷</span></button>
-    <button class="rbp-lang-btn${' rbp-is-active'.repeat(+(currentLang==='en'))}" data-rbp-lang="en" title="English" type="button"><span>🇺🇸</span></button>
-    <button class="rbp-lang-btn${' rbp-is-active'.repeat(+(currentLang==='it'))}" data-rbp-lang="it" title="Italiano" type="button"><span>🇮🇹</span></button>
+    ${langBtns()}
   </div>
 </div>`;
   }
 
   /* ══════════════════════════════════════════════
-     5. FOOTER
+     5. BUILD FOOTER
   ══════════════════════════════════════════════ */
   function buildFooter(d) {
     return `
@@ -450,7 +461,7 @@
   <div class="rbp-footer-content">
     <div class="rbp-footer-top">
       <div>
-        <a href="index.html"><img src="rbp_Italic.png" alt="RugbyBoard Pro" class="rbp-footer-logo-img" width="145" height="46" loading="lazy"/></a>
+        <a href="index.html"><img src="rbp_Italic.png" alt="RugbyBoard Pro" class="rbp-footer-logo-img" width="140" height="44" loading="lazy"/></a>
         <p class="rbp-footer-description" data-rbp-i18n="footerDesc">${d.footerDesc}</p>
       </div>
       <div class="rbp-footer-column">
@@ -465,8 +476,8 @@
       <div class="rbp-footer-column">
         <h4 data-rbp-i18n="footerResources">${d.footerResources}</h4>
         <div class="rbp-footer-links">
-          <a href="document.html"  data-rbp-i18n="navDocs">${d.navDocs}</a>
-          <a href="soporte.html"   data-rbp-i18n="navSupport">${d.navSupport}</a>
+          <a href="document.html" data-rbp-i18n="navDocs">${d.navDocs}</a>
+          <a href="soporte.html"  data-rbp-i18n="navSupport">${d.navSupport}</a>
         </div>
       </div>
       <div class="rbp-footer-column">
@@ -481,11 +492,11 @@
     <div class="rbp-footer-bottom">
       <small class="rbp-copyright" data-rbp-i18n="footerText">${d.footerText}</small>
       <div class="rbp-social-links">
-        <a href="#" class="rbp-social-icon" aria-label="Twitter" rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
-        <a href="#" class="rbp-social-icon" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="rbp-social-icon" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="rbp-social-icon" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="rbp-social-icon" aria-label="YouTube" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="rbp-social-icon" aria-label="Twitter"    rel="noopener noreferrer"><i class="fab fa-x-twitter"></i></a>
+        <a href="#" class="rbp-social-icon" aria-label="Facebook"   rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="rbp-social-icon" aria-label="Instagram"  rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="rbp-social-icon" aria-label="LinkedIn"   rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="rbp-social-icon" aria-label="YouTube"    rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
       </div>
     </div>
   </div>
@@ -493,41 +504,28 @@
   }
 
   /* ══════════════════════════════════════════════
-     6. INJECT NAV + FOOTER
+     6. INJECT
   ══════════════════════════════════════════════ */
   const wrapper = document.querySelector('.content-wrapper') || document.body;
   const navRoot = document.createElement('div');
   const ftrRoot = document.createElement('div');
   navRoot.id = 'rbp-nav-root';
-  ftrRoot.id = 'rbp-footer-root';
+  ftrRoot.id  = 'rbp-footer-root';
 
-  // Place nav: replace <!--RBP_NAV--> comment or prepend
-  let navDone = false;
+  let navDone = false, ftrDone = false;
   for (const node of Array.from(wrapper.childNodes)) {
-    if (node.nodeType === 8 && node.nodeValue.trim() === 'RBP_NAV') {
-      wrapper.insertBefore(navRoot, node);
-      wrapper.removeChild(node);
-      navDone = true; break;
+    if (node.nodeType === 8) {
+      const v = node.nodeValue.trim();
+      if (v === 'RBP_NAV'    && !navDone) { wrapper.insertBefore(navRoot, node); wrapper.removeChild(node); navDone = true; }
+      if (v === 'RBP_FOOTER' && !ftrDone) { wrapper.insertBefore(ftrRoot, node); wrapper.removeChild(node); ftrDone = true; }
     }
   }
   if (!navDone) wrapper.insertBefore(navRoot, wrapper.firstChild);
-
-  // Place footer: replace <!--RBP_FOOTER--> comment or append
-  let ftrDone = false;
-  for (const node of Array.from(wrapper.childNodes)) {
-    if (node.nodeType === 8 && node.nodeValue.trim() === 'RBP_FOOTER') {
-      wrapper.insertBefore(ftrRoot, node);
-      wrapper.removeChild(node);
-      ftrDone = true; break;
-    }
-  }
   if (!ftrDone) wrapper.appendChild(ftrRoot);
 
   /* ══════════════════════════════════════════════
-     7. LANGUAGE — translates nav, footer AND page
+     7. LANG ENGINE
   ══════════════════════════════════════════════ */
-  let currentLang = localStorage.getItem('rbp-lang') || 'es';
-
   function applyLang(lang) {
     const d = T[lang] || T.es;
     currentLang = lang;
@@ -535,22 +533,17 @@
     navRoot.innerHTML = buildNav(d);
     ftrRoot.innerHTML = buildFooter(d);
 
-    // Translate ALL data-i18n elements on the page
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const v = d[el.dataset.i18n];
       if (v !== undefined) el.textContent = v;
     });
-    // Translate data-rbp-i18n elements (nav/footer)
     document.querySelectorAll('[data-rbp-i18n]').forEach(el => {
       const v = d[el.dataset.rbpI18n];
       if (v !== undefined) el.textContent = v;
     });
-
-    // Mark active lang buttons
     document.querySelectorAll('.rbp-lang-btn').forEach(b =>
       b.classList.toggle('rbp-is-active', b.dataset.rbpLang === lang)
     );
-
     document.documentElement.lang = lang;
     localStorage.setItem('rbp-lang', lang);
     bindEvents();
@@ -568,32 +561,30 @@
     if (!burger) return;
 
     const open = () => {
-      [burger,overlay,drawer].forEach(e=>e.classList.add('rbp-is-open'));
+      [burger,overlay,drawer].forEach(e => e.classList.add('rbp-is-open'));
       burger.setAttribute('aria-expanded','true');
-      document.body.style.overflow='hidden';
-      setTimeout(()=>drawer.querySelector('a')?.focus(),50);
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => drawer.querySelector('a,button')?.focus(), 60);
     };
     const close = () => {
-      [burger,overlay,drawer].forEach(e=>e.classList.remove('rbp-is-open'));
+      [burger,overlay,drawer].forEach(e => e.classList.remove('rbp-is-open'));
       burger.setAttribute('aria-expanded','false');
-      document.body.style.overflow='';
+      document.body.style.overflow = '';
     };
 
-    burger.addEventListener('click', ()=>drawer.classList.contains('rbp-is-open')?close():open());
+    burger.addEventListener('click', () => drawer.classList.contains('rbp-is-open') ? close() : open());
     closeBtn?.addEventListener('click', close);
     overlay.addEventListener('click', close);
-    drawer.addEventListener('click', e=>{ if(e.target.matches('a')||e.target.closest('a')) close(); });
-    window.addEventListener('keydown', e=>{ if(e.key==='Escape') close(); });
-    window.addEventListener('resize', ()=>{ if(window.innerWidth>900) close(); });
+    drawer.addEventListener('click', e => { if (e.target.matches('a') || e.target.closest('a')) close(); });
+    window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    window.addEventListener('resize',  () => { if (window.innerWidth > 860) close(); });
 
-    // Scroll shadow
-    const onScroll = ()=> nav?.classList.toggle('rbp-scrolled', window.scrollY>8);
-    window.addEventListener('scroll', onScroll, {passive:true});
+    const onScroll = () => nav?.classList.toggle('rbp-scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
-    // Lang buttons
-    document.querySelectorAll('.rbp-lang-btn').forEach(b=>
-      b.addEventListener('click', ()=> applyLang(b.dataset.rbpLang))
+    document.querySelectorAll('.rbp-lang-btn').forEach(b =>
+      b.addEventListener('click', () => applyLang(b.dataset.rbpLang))
     );
   }
 
@@ -601,5 +592,4 @@
      9. INIT
   ══════════════════════════════════════════════ */
   applyLang(currentLang);
-
 })();

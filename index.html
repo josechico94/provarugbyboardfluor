@@ -153,9 +153,8 @@
     }
     .section-title .gradient-text { color: var(--fluor); }
     .section-subtitle { font-size: 1.1rem; color: var(--ink-muted); line-height: 1.75; font-weight: 500; }
-    .features-grid {
-      max-width: 1300px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    J00px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
     }
     .feature-card {
@@ -291,7 +290,9 @@
     /* Sticky nav scroll offset */
     [id] { scroll-margin-top: 82px; }
 
-    /* ── Global section centering ── */
+    /* ══════════════════════════════════════
+       CENTERING — all sections
+    ══════════════════════════════════════ */
     .hero,
     .features,
     .pricing,
@@ -299,37 +300,60 @@
     .cta-section,
     .testimonials { text-align: center; }
 
-    .hero-content,
-    .features-grid,
-    .pricing-grid,
-    .demo-container,
-    .cta-content { margin-left: auto; margin-right: auto; }
+    /* ══════════════════════════════════════
+       FEATURES GRID — exactly 3 cols, 2 rows
+    ══════════════════════════════════════ */
+    .features-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+    .feature-card { text-align: left; }
 
-    /* ── Responsive index ── */
-    @media (max-width: 900px) {
-      .hero { padding: 4.5rem 1.5rem 3rem; }
-      .hero h1 { font-size: 3.2rem; }
-      .demo-section { padding: 3rem 1.5rem; }
-      .features { padding: 4rem 1.5rem; }
-      .pricing { padding: 4rem 1.5rem; }
-      .cta-section { padding: 4rem 1.5rem; }
+    /* ══════════════════════════════════════
+       RESPONSIVE — Desktop (≤1100px)
+    ══════════════════════════════════════ */
+    @media (max-width: 1100px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .pricing-grid  { grid-template-columns: repeat(2, 1fr) !important; }
     }
-    @media (max-width: 600px) {
-      .hero { padding: 3.5rem 1rem 2.5rem; }
-      .hero h1 { font-size: 2.5rem; }
-      .hero p { font-size: 1rem; }
-      .cta-group { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-secondary { width: 100%; max-width: 300px; justify-content: center; text-align: center; }
-      .stats-bar { grid-template-columns: 1fr; gap: 1rem; padding: 1.25rem; }
-      .stat-number { font-size: 2rem; }
-      .section-header { margin-bottom: 2.5rem; }
-      .section-title { font-size: 1.8rem !important; }
-      .features-grid { grid-template-columns: 1fr !important; gap: 1rem; }
-      .pricing-grid { grid-template-columns: 1fr !important; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — Tablet (≤768px)
+    ══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .hero          { padding: 4rem 1.25rem 2.5rem; }
+      .hero h1       { font-size: 2.8rem; }
+      .hero p        { font-size: 1rem; }
+      .demo-section  { padding: 3rem 1.25rem; }
+      .features      { padding: 3.5rem 1.25rem; }
+      .pricing       { padding: 3.5rem 1.25rem; }
+      .cta-section   { padding: 3.5rem 1.25rem; }
+      .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .pricing-grid  { grid-template-columns: 1fr !important; }
       .pricing-card.featured { transform: scale(1); }
-      .cta-content h2 { font-size: 2rem; }
-      .pricing-card { padding: 2rem 1.5rem; }
+      .section-title { font-size: 1.9rem; }
     }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE — Mobile (≤520px)
+    ══════════════════════════════════════ */
+    @media (max-width: 520px) {
+      .hero          { padding: 3rem .9rem 2rem; }
+      .hero h1       { font-size: 2.2rem; letter-spacing: -.01em; }
+      .hero p        { font-size: .95rem; }
+      .cta-group     { flex-direction: column; align-items: center; }
+      .btn-primary,
+      .btn-secondary { width: 100%; max-width: 290px; justify-content: center; }
+      .stats-bar     { grid-template-columns: 1fr; gap: .9rem; padding: 1.1rem; }
+      .stat-number   { font-size: 1.9rem; }
+      .features-grid { grid-template-columns: 1fr !important; }
+      .pricing-grid  { grid-template-columns: 1fr !important; }
+      .section-title { font-size: 1.6rem; }
+      .cta-content h2{ font-size: 1.8rem; }
+      .pricing-card  { padding: 1.75rem 1.25rem; }
+    }
+
+    /* Scroll offset for sticky nav */
+    [id] { scroll-margin-top: 80px; }
 </style>
 </head>
 
@@ -392,7 +416,7 @@
               <span class="window-dot dot-green"></span>
             </div>
             <div class="demo-content">
-              <video src="rugbypro.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;border-radius:0 0 14px 14px;"></video>
+              <video src="rugbypro.mp4" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:contain;background:#000;border-radius:0 0 14px 14px;"></video>
             </div>
           </div>
         </div>
