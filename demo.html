@@ -57,6 +57,7 @@
 .chev { opacity: 0.65; font-size: 12px; }
 .mobile-lang/* ============= Demo page ============= */
     .demo-hero {
+      text-align: center;
       max-width: 1300px;
       margin: 0 auto;
       padding: 4.5rem 3rem 1.5rem;
@@ -73,6 +74,7 @@
     }
     .badge-dot { width: 8px; height: 8px; border-radius: 999px; background: #c8ff00; }
     .demo-title {
+      text-align: center;
       font-size: 3.2rem;
       font-weight: 900;
       letter-spacing: -0.02em;
@@ -84,6 +86,7 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .demo-subtitle {
+      margin-left: auto; margin-right: auto; text-align: center;
       margin-top: 1.2rem;
       color: rgba(240, 246, 252, 0.70);
       font-size: 1.15rem;
@@ -331,14 +334,18 @@
       .}
 
     @media (max-width: 860px) {
-      .demo-hero { padding: 3rem 1.5rem 1rem; }
-      .demo-title { font-size: 2rem; }
+      .demo-hero {
+      text-align: center; padding: 3rem 1.5rem 1rem; }
+      .demo-title {
+      text-align: center; font-size: 2rem; }
       .controls { padding: 0 1.5rem 1rem; flex-wrap: wrap; }
       .video-shell { padding: 0 1.5rem 3rem; grid-template-columns: 1fr !important; }
     }
     @media (max-width: 480px) {
-      .demo-hero { padding: 2.5rem 1rem 1rem; }
-      .demo-title { font-size: 1.7rem; }
+      .demo-hero {
+      text-align: center; padding: 2.5rem 1rem 1rem; }
+      .demo-title {
+      text-align: center; font-size: 1.7rem; }
       .video-shell { padding: 0 1rem 2rem; }
     }
 
@@ -550,7 +557,6 @@
 
   
 
-<script src="rbp-shared.js"></script>
 <script>
 
 // ── Filter ──
@@ -614,6 +620,76 @@ document.querySelectorAll(".watch-btn").forEach(btn => {
     const src       = btn.getAttribute("data-video");
     const titleText = btn.closest(".card")?.querySelector("h3")?.textContent || "Tutorial";
     openVideo(src, titleText);
+  });
+});
+
+</script>
+<script>
+
+/* ── Search/Filter ── */
+const searchInput    = document.getElementById("searchInput");
+const categorySelect = document.getElementById("categorySelect");
+const cards = Array.from(document.querySelectorAll("#videoGrid .card"));
+
+function applyFilters() {
+  const q   = (searchInput ? searchInput.value : "").trim().toLowerCase();
+  const cat = categorySelect ? categorySelect.value : "all";
+  cards.forEach(card => {
+    const title    = (card.getAttribute("data-title")    || "").toLowerCase();
+    const category =  card.getAttribute("data-category") || "all";
+    const show = (!q || title.includes(q)) && (cat === "all" || cat === category);
+    card.style.display = show ? "" : "none";
+  });
+}
+if (searchInput)    searchInput.addEventListener("input",  applyFilters);
+if (categorySelect) categorySelect.addEventListener("change", applyFilters);
+applyFilters();
+
+/* ── Thumbnail hover preview ── */
+document.querySelectorAll(".thumb video").forEach(v => {
+  v.addEventListener("mouseenter", () => { try { v.currentTime = 0; v.play(); } catch(e){} });
+  v.addEventListener("mouseleave", () => { try { v.pause(); v.currentTime = 0; } catch(e){} });
+});
+
+/* ── Modal video player ── */
+const videoModal    = document.getElementById("videoModal");
+const modalVideo    = document.getElementById("modalVideo");
+const modalTitleEl  = document.getElementById("modalTitle");
+const closeModalBtn = document.getElementById("closeModal");
+
+function openVideo(src, titleText) {
+  if (!videoModal || !modalVideo) return;
+  videoModal.classList.add("is-open");
+  videoModal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  if (modalTitleEl) modalTitleEl.textContent = titleText || "Tutorial";
+  modalVideo.src = src;
+  modalVideo.currentTime = 0;
+  modalVideo.play().catch(() => {});
+}
+
+function closeVideo() {
+  if (!videoModal || !modalVideo) return;
+  videoModal.classList.remove("is-open");
+  videoModal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  modalVideo.pause();
+  modalVideo.removeAttribute("src");
+  modalVideo.load();
+}
+
+if (closeModalBtn) closeModalBtn.addEventListener("click", closeVideo);
+if (videoModal)    videoModal.addEventListener("click", e => { if (e.target === videoModal) closeVideo(); });
+window.addEventListener("keydown", e => { if (e.key === "Escape" && videoModal && videoModal.classList.contains("is-open")) closeVideo(); });
+
+/* ── Watch buttons — click to open modal ── */
+document.querySelectorAll(".watch-btn").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.stopPropagation();
+    const src       = btn.getAttribute("data-video");
+    const card      = btn.closest(".card");
+    const titleText = card ? (card.querySelector("h3, .card-title")?.textContent?.trim() || "Tutorial") : "Tutorial";
+    if (src) openVideo(src, titleText);
   });
 });
 
