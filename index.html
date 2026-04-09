@@ -153,10 +153,7 @@
     }
     .section-title .gradient-text { color: var(--fluor); }
     .section-subtitle { font-size: 1.1rem; color: var(--ink-muted); line-height: 1.75; font-weight: 500; }
-    J00px; margin: 0 auto;
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
+    
     .feature-card {
       background: var(--card-bg); border: 1px solid var(--border);
       border-radius: 20px; padding: 2.25rem;
@@ -290,70 +287,73 @@
     /* Sticky nav scroll offset */
     [id] { scroll-margin-top: 82px; }
 
-    /* ══════════════════════════════════════
-       CENTERING — all sections
-    ══════════════════════════════════════ */
+    /* ═══════════════════════════════════════
+       FEATURES GRID — 3 columns, 2 rows
+    ═══════════════════════════════════════ */
+    .features-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* ═══════════════════════════════════════
+       GLOBAL CENTERING
+    ═══════════════════════════════════════ */
     .hero,
     .features,
     .pricing,
     .demo-section,
     .cta-section,
-    .testimonials { text-align: center; }
-
-    /* ══════════════════════════════════════
-       FEATURES GRID — exactly 3 cols, 2 rows
-    ══════════════════════════════════════ */
-    .features-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
+    .testimonial { text-align: center; }
     .feature-card { text-align: left; }
 
-    /* ══════════════════════════════════════
-       RESPONSIVE — Desktop (≤1100px)
-    ══════════════════════════════════════ */
+    /* ═══════════════════════════════════════
+       RESPONSIVE ≤1100px
+    ═══════════════════════════════════════ */
     @media (max-width: 1100px) {
-      .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .pricing-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid  { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* ══════════════════════════════════════
-       RESPONSIVE — Tablet (≤768px)
-    ══════════════════════════════════════ */
+    /* ═══════════════════════════════════════
+       RESPONSIVE ≤768px
+    ═══════════════════════════════════════ */
     @media (max-width: 768px) {
-      .hero          { padding: 4rem 1.25rem 2.5rem; }
-      .hero h1       { font-size: 2.8rem; }
-      .hero p        { font-size: 1rem; }
-      .demo-section  { padding: 3rem 1.25rem; }
-      .features      { padding: 3.5rem 1.25rem; }
-      .pricing       { padding: 3.5rem 1.25rem; }
-      .cta-section   { padding: 3.5rem 1.25rem; }
-      .features-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      .pricing-grid  { grid-template-columns: 1fr !important; }
+      .hero         { padding: 4rem 1.25rem 2.5rem; }
+      .hero h1      { font-size: 2.8rem; }
+      .hero p       { font-size: 1rem; }
+      .demo-section { padding: 3rem 1.25rem; }
+      .features     { padding: 3.5rem 1.25rem; }
+      .pricing      { padding: 3.5rem 1.25rem; }
+      .cta-section  { padding: 3.5rem 1.25rem; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid  { grid-template-columns: 1fr; }
       .pricing-card.featured { transform: scale(1); }
-      .section-title { font-size: 1.9rem; }
+      .section-title { font-size: 2rem; }
     }
 
-    /* ══════════════════════════════════════
-       RESPONSIVE — Mobile (≤520px)
-    ══════════════════════════════════════ */
+    /* ═══════════════════════════════════════
+       RESPONSIVE ≤520px
+    ═══════════════════════════════════════ */
     @media (max-width: 520px) {
       .hero          { padding: 3rem .9rem 2rem; }
-      .hero h1       { font-size: 2.2rem; letter-spacing: -.01em; }
+      .hero h1       { font-size: 2.1rem; letter-spacing: -.01em; }
       .hero p        { font-size: .95rem; }
       .cta-group     { flex-direction: column; align-items: center; }
       .btn-primary,
       .btn-secondary { width: 100%; max-width: 290px; justify-content: center; }
       .stats-bar     { grid-template-columns: 1fr; gap: .9rem; padding: 1.1rem; }
       .stat-number   { font-size: 1.9rem; }
-      .features-grid { grid-template-columns: 1fr !important; }
-      .pricing-grid  { grid-template-columns: 1fr !important; }
+      .features-grid { grid-template-columns: 1fr; }
+      .pricing-grid  { grid-template-columns: 1fr; }
       .section-title { font-size: 1.6rem; }
       .cta-content h2{ font-size: 1.8rem; }
       .pricing-card  { padding: 1.75rem 1.25rem; }
     }
 
-    /* Scroll offset for sticky nav */
-    [id] { scroll-margin-top: 80px; }
+    /* Anchor offset for sticky nav */
+    [id] { scroll-margin-top: 72px; }
 </style>
 </head>
 
