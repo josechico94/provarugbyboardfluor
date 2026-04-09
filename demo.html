@@ -340,7 +340,26 @@
       .demo-hero { padding: 2.5rem 1rem 1rem; }
       .demo-title { font-size: 1.7rem; }
       .video-shell { padding: 0 1rem 2rem; }
-    }</style>
+    }
+
+    /* ── Page title centering ── */
+    .page-hero, .demo-hero, .docs-hero, .hero {
+      text-align: center;
+    }
+    .page-hero .badge, .demo-hero .badge, .docs-hero .badge,
+    .page-title, .demo-title, .docs-title, .title {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-header, .section-header h2, .section-header p {
+      text-align: center;
+    }
+
+    /* ── Prevent clipping of fixed nav/drawer ── */
+    .landing-wrapper { overflow: visible !important; }
+    .content-wrapper { overflow: visible !important; }
+</style>
 </head>
 
 <body>
@@ -530,29 +549,74 @@
   </div>
 
   
+
+<script src="rbp-shared.js"></script>
 <script>
-const searchInput = document.getElementById("searchInput");
-    const categorySelect = document.getElementById("categorySelect");
-    const cards = Array.from(document.querySelectorAll("#videoGrid .card"));
 
-    function applyFilters() {
-      const q = (searchInput.value || "").trim().toLowerCase();
-      const cat = categorySelect.value;
+// ── Filter ──
+const searchInput    = document.getElementById("searchInput");
+const categorySelect = document.getElementById("categorySelect");
+const cards = Array.from(document.querySelectorAll("#videoGrid .card"));
 
-      cards.forEach(card => {
-        const title = (card.getAttribute("data-title") || "").toLowerCase();
-        const category = card.getAttribute("data-category") || "all";
+function applyFilters() {
+  const q   = (searchInput.value || "").trim().toLowerCase();
+  const cat = categorySelect.value;
+  cards.forEach(card => {
+    const title    = (card.getAttribute("data-title")    || "").toLowerCase();
+    const category =  card.getAttribute("data-category") || "all";
+    card.style.display = ((!q || title.includes(q)) && (cat === "all" || cat === category)) ? "" : "none";
+  });
+}
+searchInput?.addEventListener("input",  applyFilters);
+categorySelect?.addEventListener("change", applyFilters);
+applyFilters();
 
-        const matchesText = !q || title.includes(q);
-        const matchesCat = (cat === "all") || (cat === category);
+// ── Thumbnail hover preview ──
+document.querySelectorAll(".thumb video").forEach(v => {
+  v.addEventListener("mouseenter", () => { try { v.currentTime = 0; v.play(); } catch(e){} });
+  v.addEventListener("mouseleave", () => { try { v.pause(); v.currentTime = 0; } catch(e){} });
+});
 
-        card.style.display = (matchesText && matchesCat) ? "" : "none";
-      });
-    }
+// ── Modal video player ──
+const modal        = document.getElementById("videoModal");
+const modalVideo   = document.getElementById("modalVideo");
+const modalTitle   = document.getElementById("modalTitle");
+const closeModalBtn= document.getElementById("closeModal");
 
-    searchInput.addEventListener("input", applyFilters);
-    categorySelect.addEventListener("change", applyFilters);
-    applyFilters();
+function openVideo(src, titleText) {
+  if (!modal || !modalVideo) return;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  modalTitle.textContent = titleText || "Tutorial";
+  modalVideo.src = src;
+  modalVideo.currentTime = 0;
+  modalVideo.play().catch(() => {});
+}
+
+function closeVideo() {
+  if (!modal || !modalVideo) return;
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  modalVideo.pause();
+  modalVideo.removeAttribute("src");
+  modalVideo.load();
+}
+
+closeModalBtn?.addEventListener("click", closeVideo);
+modal?.addEventListener("click", e => { if (e.target === modal) closeVideo(); });
+window.addEventListener("keydown", e => { if (e.key === "Escape") closeVideo(); });
+
+// ── Watch buttons ──
+document.querySelectorAll(".watch-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const src       = btn.getAttribute("data-video");
+    const titleText = btn.closest(".card")?.querySelector("h3")?.textContent || "Tutorial";
+    openVideo(src, titleText);
+  });
+});
+
 </script>
 <script src="rbp-shared.js"></script>
 </body>

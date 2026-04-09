@@ -253,7 +253,26 @@
       .docs-title { font-size: 1.7rem; }
       .docs-shell { padding: 0 1rem 2rem; }
       .cards-grid { grid-template-columns: 1fr !important; }
-    }</style>
+    }
+
+    /* ── Page title centering ── */
+    .page-hero, .demo-hero, .docs-hero, .hero {
+      text-align: center;
+    }
+    .page-hero .badge, .demo-hero .badge, .docs-hero .badge,
+    .page-title, .demo-title, .docs-title, .title {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-header, .section-header h2, .section-header p {
+      text-align: center;
+    }
+
+    /* ── Prevent clipping of fixed nav/drawer ── */
+    .landing-wrapper { overflow: visible !important; }
+    .content-wrapper { overflow: visible !important; }
+</style>
 </head>
 
 <body>

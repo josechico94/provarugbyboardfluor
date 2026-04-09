@@ -107,7 +107,7 @@
 /* ── MOBILE DRAWER — redesigned ── */
 .rbp-mobile-drawer {
   position: fixed; top: 0; right: 0;
-  width: min(300px,85vw); height: 100dvh;
+  width: 300px; max-width: 92vw; height: 100dvh;
   background: #0c1018;
   border-left: 1px solid rgba(200,255,0,.15);
   z-index: 999;
@@ -116,15 +116,16 @@
   display: flex; flex-direction: column;
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
+  box-shadow: -8px 0 40px rgba(0,0,0,.7);
 }
 .rbp-mobile-drawer.rbp-is-open { transform: translateX(0); }
 
 /* Drawer header */
 .rbp-drawer-header {
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.1rem 1.25rem;
+  padding: 1rem 1.5rem;
   border-bottom: 1px solid rgba(200,255,0,.1);
-  flex-shrink: 0;
+  flex-shrink: 0; min-width: 0;
 }
 .rbp-drawer-logo { height: 36px; width: auto; }
 .rbp-mobile-close {
@@ -137,15 +138,15 @@
 .rbp-mobile-close:hover { border-color: #c8ff00; color: #c8ff00; background: rgba(200,255,0,.14); }
 
 /* Drawer body */
-.rbp-drawer-body { flex: 1; overflow-y: auto; padding: .5rem 1.25rem 1.5rem; }
+.rbp-drawer-body { flex: 1; overflow-y: auto; padding: .75rem 1.5rem 1.5rem; min-width: 0; }
 
 /* Nav links in drawer */
 .rbp-mobile-link {
   display: flex; justify-content: space-between; align-items: center;
   padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,.05);
-  color: rgba(240,246,252,.8); text-decoration: none;
-  font-weight: 700; font-size: .9rem; letter-spacing: .05em; text-transform: uppercase;
-  transition: color .18s;
+  color: rgba(240,246,252,.85); text-decoration: none;
+  font-weight: 700; font-size: .95rem; letter-spacing: .04em; text-transform: uppercase;
+  transition: color .18s; white-space: nowrap;
 }
 .rbp-mobile-link:hover, .rbp-mobile-link.rbp-active { color: #c8ff00; }
 .rbp-mobile-link .rbp-chev {
@@ -168,7 +169,7 @@
 
 /* Drawer footer — lang */
 .rbp-drawer-footer {
-  padding: 1rem 1.25rem 1.5rem;
+  padding: 1rem 1.5rem 1.75rem;
   border-top: 1px solid rgba(200,255,0,.08);
   flex-shrink: 0;
 }
@@ -241,6 +242,11 @@
 }
 
 [id] { scroll-margin-top: 72px; }
+
+/* Prevent body clipping the drawer */
+body { overflow-x: hidden; }
+.rbp-mobile-drawer { isolation: isolate; }
+
 `;
 
   const st = document.createElement('style');
