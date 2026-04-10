@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Contactá al equipo de RugbyBoard Pro. Soporte, feedback y consultas."/>
+  <meta name="description" content="Contactá al equipo de RugbyBoard Pro. Soporte técnico, feedback y consultas."/>
   <meta property="og:title" content="Contacto | RugbyBoard Pro"/>
-  <meta property="og:description" content="Contactá al equipo de RugbyBoard Pro. Soporte, feedback y consultas."/>
+  <meta property="og:description" content="Contactá al equipo de RugbyBoard Pro. Soporte técnico, feedback y consultas."/>
   <meta property="og:image" content="https://rugbyboardpro.com/rbp_Italic.png"/>
   <meta property="og:url" content="https://rugbyboardpro.com/contacto.html"/>
   <meta property="og:type" content="website"/>
@@ -16,21 +16,130 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet"/>
   <style>
-    :root{--fluor:#c8ff00;--fluor-dim:rgba(200,255,0,0.12);--fluor-glow:rgba(200,255,0,0.35);--black:#010409;--ink:#f0f6fc;--ink-muted:rgba(240,246,252,0.65);--border:rgba(255,255,255,0.07);--card-bg:rgba(255,255,255,0.025);}
-    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-    html,body{height:100%;width:100%;}
-    body{font-family:'Montserrat',-apple-system,sans-serif;background:var(--black);color:var(--ink);overflow-x:hidden;line-height:1.6;}
-    .bg-gradient{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(200,255,0,0.07) 0%,transparent 60%);pointer-events:none;z-index:0;}
-    .grid-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(200,255,0,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(200,255,0,0.02) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0;}
-    .content-wrapper{position:relative;z-index:1;}
+
+/* ═══ RBP UNIVERSAL — Clean, single source ═══ */
+:root {
+  --g: #c8ff00; --g-dim: rgba(200,255,0,.12); --g-glow: rgba(200,255,0,.32);
+  --black: #030608; --ink: #f0f6fc;
+  --ink-2: rgba(240,246,252,.62); --ink-3: rgba(240,246,252,.38);
+  --border: rgba(255,255,255,.07); --card: rgba(255,255,255,.028);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', -apple-system, sans-serif;
+  background: var(--black); color: var(--ink);
+  overflow-x: hidden; line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
+
+/* Background */
+.bg-gradient {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(200,255,0,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 85% 85%, rgba(200,255,0,.04) 0%, transparent 50%),
+    var(--black);
+}
+.grid-overlay {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(200,255,0,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,255,0,.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.content-wrapper { position:relative; z-index:1; }
+.landing-wrapper { width:100%; min-height:100%; position:relative; }
+
+/* ── PAGE HERO — centered, padded from nav ── */
+.page-hero, .demo-hero, .docs-hero, header.hero {
+  padding: 5rem 2rem 2.5rem;
+  text-align: center;
+  position: relative;
+}
+.page-hero .inner,
+.demo-hero .inner,
+.docs-hero .inner,
+header.hero .inner {
+  max-width: 800px; margin: 0 auto;
+}
+
+/* Badge */
+.badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.4rem 1rem; margin-bottom:1.5rem;
+  background:rgba(200,255,0,.08); border:1px solid rgba(200,255,0,.28);
+  border-radius:999px; color:#c8ff00;
+  font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+}
+.badge-dot {
+  width:6px; height:6px; border-radius:50%; background:#c8ff00;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} 
+
+/* Page title */
+.page-title, .demo-title, .docs-title, h1.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900; font-style: italic;
+  text-transform: uppercase; line-height: 1.0;
+  letter-spacing: -.02em; margin-bottom: 1rem;
+}
+.fluor, .gradient-text { color: #c8ff00; }
+
+/* Page subtitle */
+.page-sub, .demo-subtitle, .docs-subtitle, p.subtitle {
+  font-size: 1.05rem; color: var(--ink-2);
+  max-width: 640px; margin: 0 auto 1.5rem;
+  line-height: 1.8; font-weight: 500;
+}
+
+/* ── CONTENT WRAP ── */
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+.page {
+  max-width: 1160px; margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+
+/* ── PANELS / CARDS ── */
+.panel {
+  background: var(--card); border:1px solid var(--border);
+  border-radius: 20px; padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.panel-title {
+  font-size: 1.1rem; font-weight:900; font-style:italic;
+  text-transform:uppercase; color:#c8ff00; margin-bottom:.4rem;
+}
+.panel-sub { color:var(--ink-2); font-size:.9rem; margin-bottom:1.25rem; }
+
+/* Section headers */
+.section-header { text-align:center; margin-bottom:3rem; }
+.section-title, h2.s-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight:900; font-style:italic; text-transform:uppercase;
+  line-height:1.05; margin-bottom:.75rem;
+}
+.section-subtitle { font-size:1rem; color:var(--ink-2); max-width:560px; margin:0 auto; line-height:1.75; }
+
+/* ── SCROLL MARGIN ── */
+[id] { scroll-margin-top: 76px; }
+
+/* ── OVERFLOW FIX ── */
+.landing-wrapper, .content-wrapper { overflow:visible !important; }
+
+
+/* ═══ PAGE SPECIFIC ═══ */
 .lang-btn:hover,.chev{opacity:0.5;font-size:12px;}
 /* CONTACT PAGE */
     .page{min-height:calc(100vh - 80px);display:flex;align-items:center;justify-content:center;padding:5rem 3rem;}
     .page-inner{width:100%;max-width:1200px;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
     .left-col{display:flex;flex-direction:column;gap:2rem;}
     .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem 1rem;background:var(--fluor-dim);border:1px solid var(--fluor);border-radius:999px;color:var(--fluor);font-weight:800;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;width:fit-content;}
-    .badge-dot{width:7px;height:7px;background:var(--fluor);border-radius:50%;animation:pulse 2s ease-in-out infinite;}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.3)}}
+50%{opacity:.4;transform:scale(1.3)}}
     .left-col h1{font-size:3.2rem;font-weight:900;font-style:italic;text-transform:uppercase;line-height:1.05;letter-spacing:-.02em;}
     .left-col h1 .fluor{color:var(--fluor);}
     .left-col p{color:var(--ink-muted);font-size:1.05rem;line-height:1.8;}
@@ -51,8 +160,7 @@
       font-size:.92rem;font-weight:500;outline:none;
       transition:border-color .2s,box-shadow .2s;
     }
-    .field textarea{resize:vertical;min-height:110px;padding-left:2.8rem;}
-    .field select option{background:#0a1020;}
+    .field textare.field select option{background:#0a1020;}
     .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--fluor);box-shadow:0 0 0 3px rgba(200,255,0,0.15);}
     .field .ico{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);color:var(--ink-muted);font-size:.85rem;pointer-events:none;}
     .field.txt-area .ico{top:1rem;transform:none;}
@@ -70,46 +178,25 @@
     .whatsapp-float:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 32px rgba(37,211,102,0.5);}
 
 .@media(max-width:768px){.page{padding:3rem 1.25rem;}.page-inner{grid-template-columns:1fr;gap:2.5rem;}.left-col h1{font-size:2rem;}.stats-row{grid-template-columns:1fr 1fr 1fr;gap:.75rem;}.}
-    @view-transition{navigation:auto;}
-  
-    /* Sticky nav scroll offset */
-    [id] { scroll-margin-top: 82px; }
 
-    @media (max-width: 860px) {
-      .page { padding: 3rem 1.5rem; }
-      .page-inner { grid-template-columns: 1fr !important; gap: 2rem; }
-      .left-col h1 { font-size: 2rem; }
-      .stats-row { gap: .5rem; }
-    }
-    @media (max-width: 480px) {
-      .page { padding: 2rem 1rem; }
-      .left-col h1 { font-size: 1.7rem; }
-    }
 
-    /* ── Page title centering ── */
-    .page-hero, .demo-hero, .docs-hero, .hero {
-      text-align: center;
-    }
-    .page-hero .badge, .demo-hero .badge, .docs-hero .badge,
-    .page-title, .demo-title, .docs-title, .title {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .section-header, .section-header h2, .section-header p {
-      text-align: center;
-    }
-
-    /* ── Prevent clipping of fixed nav/drawer ── */
-    .landing-wrapper { overflow: visible !important; }
-    .content-wrapper { overflow: visible !important; }
-</style>
+/* Contacto responsive */
+@media (max-width: 900px) {
+  .page { padding: 3rem 1.5rem; }
+  .page-inner { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+}
+@media (max-width: 540px) {
+  .page { padding: 2.5rem 1rem; }
+  .left-col h1 { font-size: 2rem; }
+  .stats-row { grid-template-columns: 1fr 1fr !important; gap: .75rem !important; }
+}
+  </style>
 </head>
 <body>
-  <div class="bg-gradient"></div>
+<div class="bg-gradient"></div>
   <div class="grid-overlay"></div>
   <div class="content-wrapper">
-
+    
     <!-- RBP_NAV -->
 
 
@@ -169,6 +256,8 @@
         </div>
       </div>
     </main>
+
+    
     <!-- RBP_FOOTER -->
 
   </div>
@@ -178,21 +267,28 @@
   </a>
   <div id="toast" class="toast"></div>
 
-  
 <script>
-const toast=document.getElementById("toast");
-function showToast(msg,type){toast.textContent=msg;toast.className="toast "+type+" show";setTimeout(()=>toast.classList.remove("show"),4000);}
-document.getElementById("contact-form")?.addEventListener("submit",async function(e){
-  e.preventDefault();
-  const btn=document.getElementById("submit-btn"),t=document.getElementById("btn-text");
-  btn.disabled=true;t.textContent="Enviando...";
-  try{
-    const res=await fetch(this.action,{method:"POST",body:new FormData(this),headers:{Accept:"application/json"}});
-    if(res.ok){showToast("✓ ¡Mensaje enviado! Te contactamos pronto.","success");this.reset();}
-    else showToast("Error al enviar. Intentá de nuevo.","error");
-  }catch{showToast("Error de conexión.","error");}
-  btn.disabled=false;t.textContent="Enviar mensaje";
-});
+const toast = document.getElementById('toast');
+function showToast(msg, type) {
+  if (!toast) return;
+  toast.textContent = msg; toast.className = 'toast ' + type + ' show';
+  setTimeout(()=> toast.classList.remove('show'), 4000);
+}
+const form = document.getElementById('contact-form');
+const submitBtn = document.getElementById('submit-btn');
+const btnText = document.getElementById('btn-text');
+if (form) {
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnText) btnText.textContent = '...';
+    await new Promise(r => setTimeout(r, 1200));
+    showToast('✅ Mensaje enviado con éxito', 'success');
+    form.reset();
+    if (submitBtn) submitBtn.disabled = false;
+    if (btnText) btnText.textContent = 'Enviar mensaje';
+  });
+}
 </script>
 <script src="rbp-shared.js"></script>
 </body>

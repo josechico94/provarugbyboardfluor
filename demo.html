@@ -1,80 +1,149 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Video tutoriales de RugbyBoard Pro. Jugadas, animaciones y exportación."/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Video tutoriales de RugbyBoard Pro. Aprende a crear jugadas y animar tácticas."/>
   <meta property="og:title" content="Demo & Tutoriales | RugbyBoard Pro"/>
-  <meta property="og:description" content="Video tutoriales de RugbyBoard Pro. Jugadas, animaciones y exportación."/>
+  <meta property="og:description" content="Video tutoriales de RugbyBoard Pro. Aprende a crear jugadas y animar tácticas."/>
   <meta property="og:image" content="https://rugbyboardpro.com/rbp_Italic.png"/>
   <meta property="og:url" content="https://rugbyboardpro.com/demo.html"/>
   <meta property="og:type" content="website"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <link rel="canonical" href="https://rugbyboardpro.com/demo.html"/>
   <link rel="preload" href="rbp_Italic.png" as="image" fetchpriority="high"/>
-  <title>Demo - Tutoriales en Video | RugbyBoard Pro</title>
-
+  <title>Demo & Tutoriales | RugbyBoard Pro</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap" rel="stylesheet"/>
   <style>
-    :root {
-      --fluor:#c8ff00; --fluor-dim:rgba(200,255,0,0.12); --fluor-glow:rgba(200,255,0,0.35);
-      --black:#010409; --ink:#f0f6fc; --ink-muted:rgba(240,246,252,0.65);
-      --border:rgba(255,255,255,0.07); --card-bg:rgba(255,255,255,0.025);
-    }
-    
-    body { box-sizing: border-box; }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; width: 100%; }
-    body {
-      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      line-height: 1.6;
-      color: #f0f6fc;
-      overflow-x: hidden;
-      background: #010409;
-    }
 
-    .landing-wrapper { width: 100%; min-height: 100%; position: relative; }
-    .bg-gradient {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(ellipse at top, rgba(200, 255, 0, 0.12) 0%, transparent 50%),
-                  radial-gradient(ellipse at bottom right, rgba(200, 255, 0, 0.12) 0%, transparent 50%);
-      pointer-events: none; z-index: 0;
-    }
-    .grid-overlay {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 50px 50px;
-      pointer-events: none; z-index: 0;
-    }
-    .content-wrapper { position: relative; z-index: 1; }
+/* ═══ RBP UNIVERSAL — Clean, single source ═══ */
+:root {
+  --g: #c8ff00; --g-dim: rgba(200,255,0,.12); --g-glow: rgba(200,255,0,.32);
+  --black: #030608; --ink: #f0f6fc;
+  --ink-2: rgba(240,246,252,.62); --ink-3: rgba(240,246,252,.38);
+  --border: rgba(255,255,255,.07); --card: rgba(255,255,255,.028);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Montserrat', -apple-system, sans-serif;
+  background: var(--black); color: var(--ink);
+  overflow-x: hidden; line-height: 1.6;
+}
+a { text-decoration: none; color: inherit; }
 
+/* Background */
+.bg-gradient {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(200,255,0,.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 85% 85%, rgba(200,255,0,.04) 0%, transparent 50%),
+    var(--black);
+}
+.grid-overlay {
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(200,255,0,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200,255,0,.018) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.content-wrapper { position:relative; z-index:1; }
+.landing-wrapper { width:100%; min-height:100%; position:relative; }
+
+/* ── PAGE HERO — centered, padded from nav ── */
+.page-hero, .demo-hero, .docs-hero, header.hero {
+  padding: 5rem 2rem 2.5rem;
+  text-align: center;
+  position: relative;
+}
+.page-hero .inner,
+.demo-hero .inner,
+.docs-hero .inner,
+header.hero .inner {
+  max-width: 800px; margin: 0 auto;
+}
+
+/* Badge */
+.badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.4rem 1rem; margin-bottom:1.5rem;
+  background:rgba(200,255,0,.08); border:1px solid rgba(200,255,0,.28);
+  border-radius:999px; color:#c8ff00;
+  font-size:.72rem; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+}
+.badge-dot {
+  width:6px; height:6px; border-radius:50%; background:#c8ff00;
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+
+/* Page title */
+.page-title, .demo-title, .docs-title, h1.title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900; font-style: italic;
+  text-transform: uppercase; line-height: 1.0;
+  letter-spacing: -.02em; margin-bottom: 1rem;
+}
+.fluor, .gradient-text { color: #c8ff00; }
+
+/* Page subtitle */
+.page-sub, .demo-subtitle, .docs-subtitle, p.subtitle {
+  font-size: 1.05rem; color: var(--ink-2);
+  max-width: 640px; margin: 0 auto 1.5rem;
+  line-height: 1.8; font-weight: 500;
+}
+
+/* ── CONTENT WRAP ── */
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding: 0 2rem 5rem;
+}
+.page {
+  max-width: 1160px; margin: 0 auto;
+  padding: 4rem 2rem 5rem;
+}
+
+/* ── PANELS / CARDS ── */
+.panel {
+  background: var(--card); border:1px solid var(--border);
+  border-radius: 20px; padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+.panel-title {
+  font-size: 1.1rem; font-weight:900; font-style:italic;
+  text-transform:uppercase; color:#c8ff00; margin-bottom:.4rem;
+}
+.panel-sub { color:var(--ink-2); font-size:.9rem; margin-bottom:1.25rem; }
+
+/* Section headers */
+.section-header { text-align:center; margin-bottom:3rem; }
+.section-title, h2.s-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  font-weight:900; font-style:italic; text-transform:uppercase;
+  line-height:1.05; margin-bottom:.75rem;
+}
+.section-subtitle { font-size:1rem; color:var(--ink-2); max-width:560px; margin:0 auto; line-height:1.75; }
+
+/* ── SCROLL MARGIN ── */
+[id] { scroll-margin-top: 76px; }
+
+/* ── OVERFLOW FIX ── */
+.landing-wrapper, .content-wrapper { overflow:visible !important; }
+
+
+/* ═══ PAGE SPECIFIC ═══ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
     /* ============= NAV (igual al home) ============= */
 /* ============= Mobile menu (igual al home) ============= */
 .chev { opacity: 0.65; font-size: 12px; }
 .mobile-lang/* ============= Demo page ============= */
     .demo-hero {
-      text-align: center;
       max-width: 1300px;
       margin: 0 auto;
       padding: 4.5rem 3rem 1.5rem;
     }
-    .badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: .5rem 1rem;
-      background: rgba(200,255,0,0.10);
-      border: 1px solid rgba(200,255,0,0.28);
-      border-radius: 999px;
-      color: #c8ff00;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-    .badge-dot { width: 8px; height: 8px; border-radius: 999px; background: #c8ff00; }
-    .demo-title {
-      text-align: center;
+.demo-title {
       font-size: 3.2rem;
       font-weight: 900;
       letter-spacing: -0.02em;
@@ -86,7 +155,6 @@
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
     .demo-subtitle {
-      margin-left: auto; margin-right: auto; text-align: center;
       margin-top: 1.2rem;
       color: rgba(240, 246, 252, 0.70);
       font-size: 1.15rem;
@@ -209,8 +277,7 @@
       backdrop-filter: blur(12px);
     }
 
-    .card-body { padding: 1rem 1.1rem 1.1rem; }
-    .card-title {
+    .card-.card-title {
       font-weight: 900;
       letter-spacing: -0.02em;
       font-size: 1.05rem;
@@ -223,14 +290,7 @@
       line-height: 1.65;
       margin-bottom: .9rem;
     }
-    .meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: .75rem;
-      flex-wrap: wrap;
-    }
-    .chip {
+    .met.chip {
       display: inline-flex;
       gap: .45rem;
       align-items: center;
@@ -317,8 +377,7 @@
     }
     .close-btn:hover { transform: translateY(-1px); border-color: rgba(200,255,0,0.35); background: rgba(200,255,0,0.10); }
 
-    .modal-body { padding: 12px; }
-    .modal-body video {
+    .modal-.modal-body video {
       width: 100%;
       height: auto;
       border-radius: 16px;
@@ -332,51 +391,38 @@
       .video-shell { grid-template-columns: repeat(2, 1fr); }
       .controls { grid-template-columns: 1fr; }
       .}
+    @media (max-width: 768px) {
+.demo-hero { padding: 3.5rem 1.25rem 1.25rem; }
+      .controls { padding: 0 1.25rem 1.25rem; }
+      .video-shell { padding: 0 1.25rem 4rem; grid-template-columns: 1fr; }
+      .demo-title { font-size: 2.3rem; }
+      ..}
 
-    @media (max-width: 860px) {
-      .demo-hero {
-      text-align: center; padding: 3rem 1.5rem 1rem; }
-      .demo-title {
-      text-align: center; font-size: 2rem; }
-      .controls { padding: 0 1.5rem 1rem; flex-wrap: wrap; }
-      .video-shell { padding: 0 1.5rem 3rem; grid-template-columns: 1fr !important; }
-    }
-    @media (max-width: 480px) {
-      .demo-hero {
-      text-align: center; padding: 2.5rem 1rem 1rem; }
-      .demo-title {
-      text-align: center; font-size: 1.7rem; }
-      .video-shell { padding: 0 1rem 2rem; }
-    }
 
-    /* ── Page title centering ── */
-    .page-hero, .demo-hero, .docs-hero, .hero {
-      text-align: center;
-    }
-    .page-hero .badge, .demo-hero .badge, .docs-hero .badge,
-    .page-title, .demo-title, .docs-title, .title {
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .section-header, .section-header h2, .section-header p {
-      text-align: center;
-    }
-
-    /* ── Prevent clipping of fixed nav/drawer ── */
-    .landing-wrapper { overflow: visible !important; }
-    .content-wrapper { overflow: visible !important; }
-</style>
+/* Demo responsive */
+@media (max-width: 900px) {
+  .demo-hero { padding: 4rem 1.5rem 1.5rem; }
+  .controls { padding: 0 1.5rem 1rem; flex-wrap: wrap; gap: .75rem; }
+  .select { width: 100%; }
+  .video-shell { padding: 0 1.5rem 3rem !important; grid-template-columns: 1fr !important; }
+  .demo-title { font-size: 2.2rem; }
+}
+@media (max-width: 540px) {
+  .demo-hero { padding: 3.5rem 1rem 1rem; }
+  .demo-title { font-size: 1.9rem; }
+  .controls { padding: 0 1rem .75rem; }
+  .video-shell { padding: 0 1rem 2.5rem !important; }
+}
+  </style>
 </head>
-
 <body>
-  <div class="landing-wrapper">
+<div class="landing-wrapper">
     <div class="bg-gradient"></div>
     <div class="grid-overlay"></div>
 
     <div class="content-wrapper">
 
-
+      
     <!-- RBP_NAV -->
 
 
@@ -549,154 +595,68 @@
       </div>
 
       <!-- FOOTER -->
+      
     <!-- RBP_FOOTER -->
 
 
     </div>
   </div>
 
-  
-
 <script>
-
-// ── Filter ──
-const searchInput    = document.getElementById("searchInput");
-const categorySelect = document.getElementById("categorySelect");
-const cards = Array.from(document.querySelectorAll("#videoGrid .card"));
-
+/* Search/Filter */
+const searchInput    = document.getElementById('searchInput');
+const categorySelect = document.getElementById('categorySelect');
+const cards = Array.from(document.querySelectorAll('#videoGrid .card'));
 function applyFilters() {
-  const q   = (searchInput.value || "").trim().toLowerCase();
-  const cat = categorySelect.value;
+  const q   = (searchInput ? searchInput.value : '').trim().toLowerCase();
+  const cat = categorySelect ? categorySelect.value : 'all';
   cards.forEach(card => {
-    const title    = (card.getAttribute("data-title")    || "").toLowerCase();
-    const category =  card.getAttribute("data-category") || "all";
-    card.style.display = ((!q || title.includes(q)) && (cat === "all" || cat === category)) ? "" : "none";
+    const title    = (card.getAttribute('data-title')    || '').toLowerCase();
+    const category =  card.getAttribute('data-category') || 'all';
+    card.style.display = ((!q || title.includes(q)) && (cat === 'all' || cat === category)) ? '' : 'none';
   });
 }
-searchInput?.addEventListener("input",  applyFilters);
-categorySelect?.addEventListener("change", applyFilters);
+if (searchInput)    searchInput.addEventListener('input',  applyFilters);
+if (categorySelect) categorySelect.addEventListener('change', applyFilters);
 applyFilters();
-
-// ── Thumbnail hover preview ──
-document.querySelectorAll(".thumb video").forEach(v => {
-  v.addEventListener("mouseenter", () => { try { v.currentTime = 0; v.play(); } catch(e){} });
-  v.addEventListener("mouseleave", () => { try { v.pause(); v.currentTime = 0; } catch(e){} });
+/* Hover preview */
+document.querySelectorAll('.thumb video').forEach(v => {
+  v.addEventListener('mouseenter', ()=>{ try{v.currentTime=0;v.play();}catch(e){} });
+  v.addEventListener('mouseleave', ()=>{ try{v.pause();v.currentTime=0;}catch(e){} });
 });
-
-// ── Modal video player ──
-const modal        = document.getElementById("videoModal");
-const modalVideo   = document.getElementById("modalVideo");
-const modalTitle   = document.getElementById("modalTitle");
-const closeModalBtn= document.getElementById("closeModal");
-
-function openVideo(src, titleText) {
-  if (!modal || !modalVideo) return;
-  modal.classList.add("is-open");
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  modalTitle.textContent = titleText || "Tutorial";
-  modalVideo.src = src;
-  modalVideo.currentTime = 0;
-  modalVideo.play().catch(() => {});
+/* Modal */
+const vModal = document.getElementById('videoModal');
+const vVideo = document.getElementById('modalVideo');
+const vTitle = document.getElementById('modalTitle');
+const vClose = document.getElementById('closeModal');
+function openVideo(src, title) {
+  if (!vModal) return;
+  vModal.classList.add('is-open');
+  vModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+  if (vTitle) vTitle.textContent = title || 'Tutorial';
+  vVideo.src = src; vVideo.currentTime = 0; vVideo.play().catch(()=>{});
 }
-
 function closeVideo() {
-  if (!modal || !modalVideo) return;
-  modal.classList.remove("is-open");
-  modal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-  modalVideo.pause();
-  modalVideo.removeAttribute("src");
-  modalVideo.load();
+  if (!vModal) return;
+  vModal.classList.remove('is-open');
+  vModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  vVideo.pause(); vVideo.removeAttribute('src'); vVideo.load();
 }
-
-closeModalBtn?.addEventListener("click", closeVideo);
-modal?.addEventListener("click", e => { if (e.target === modal) closeVideo(); });
-window.addEventListener("keydown", e => { if (e.key === "Escape") closeVideo(); });
-
-// ── Watch buttons ──
-document.querySelectorAll(".watch-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const src       = btn.getAttribute("data-video");
-    const titleText = btn.closest(".card")?.querySelector("h3")?.textContent || "Tutorial";
-    openVideo(src, titleText);
-  });
-});
-
-</script>
-<script>
-
-/* ── Search/Filter ── */
-const searchInput    = document.getElementById("searchInput");
-const categorySelect = document.getElementById("categorySelect");
-const cards = Array.from(document.querySelectorAll("#videoGrid .card"));
-
-function applyFilters() {
-  const q   = (searchInput ? searchInput.value : "").trim().toLowerCase();
-  const cat = categorySelect ? categorySelect.value : "all";
-  cards.forEach(card => {
-    const title    = (card.getAttribute("data-title")    || "").toLowerCase();
-    const category =  card.getAttribute("data-category") || "all";
-    const show = (!q || title.includes(q)) && (cat === "all" || cat === category);
-    card.style.display = show ? "" : "none";
-  });
-}
-if (searchInput)    searchInput.addEventListener("input",  applyFilters);
-if (categorySelect) categorySelect.addEventListener("change", applyFilters);
-applyFilters();
-
-/* ── Thumbnail hover preview ── */
-document.querySelectorAll(".thumb video").forEach(v => {
-  v.addEventListener("mouseenter", () => { try { v.currentTime = 0; v.play(); } catch(e){} });
-  v.addEventListener("mouseleave", () => { try { v.pause(); v.currentTime = 0; } catch(e){} });
-});
-
-/* ── Modal video player ── */
-const videoModal    = document.getElementById("videoModal");
-const modalVideo    = document.getElementById("modalVideo");
-const modalTitleEl  = document.getElementById("modalTitle");
-const closeModalBtn = document.getElementById("closeModal");
-
-function openVideo(src, titleText) {
-  if (!videoModal || !modalVideo) return;
-  videoModal.classList.add("is-open");
-  videoModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  if (modalTitleEl) modalTitleEl.textContent = titleText || "Tutorial";
-  modalVideo.src = src;
-  modalVideo.currentTime = 0;
-  modalVideo.play().catch(() => {});
-}
-
-function closeVideo() {
-  if (!videoModal || !modalVideo) return;
-  videoModal.classList.remove("is-open");
-  videoModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-  modalVideo.pause();
-  modalVideo.removeAttribute("src");
-  modalVideo.load();
-}
-
-if (closeModalBtn) closeModalBtn.addEventListener("click", closeVideo);
-if (videoModal)    videoModal.addEventListener("click", e => { if (e.target === videoModal) closeVideo(); });
-window.addEventListener("keydown", e => { if (e.key === "Escape" && videoModal && videoModal.classList.contains("is-open")) closeVideo(); });
-
-/* ── Watch buttons — click to open modal ── */
-document.querySelectorAll(".watch-btn").forEach(btn => {
-  btn.addEventListener("click", e => {
+vClose?.addEventListener('click', closeVideo);
+vModal?.addEventListener('click', e=>{ if(e.target===vModal) closeVideo(); });
+window.addEventListener('keydown', e=>{ if(e.key==='Escape'&&vModal?.classList.contains('is-open')) closeVideo(); });
+document.querySelectorAll('.watch-btn').forEach(btn => {
+  btn.addEventListener('click', e => {
     e.stopPropagation();
-    const src       = btn.getAttribute("data-video");
-    const card      = btn.closest(".card");
-    const titleText = card ? (card.querySelector("h3, .card-title")?.textContent?.trim() || "Tutorial") : "Tutorial";
-    if (src) openVideo(src, titleText);
+    const src = btn.getAttribute('data-video');
+    const card = btn.closest('.card');
+    const title = card ? (card.querySelector('h3')?.textContent?.trim() || 'Tutorial') : 'Tutorial';
+    if (src) openVideo(src, title);
   });
 });
-
 </script>
 <script src="rbp-shared.js"></script>
 </body>
-
 </html>
-
-
